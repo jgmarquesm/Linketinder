@@ -1,0 +1,100 @@
+.body {
+    background-color: #ee0101;
+    font-family: 'Ubuntu', sans-serif;
+    color: #fff;
+}
+
+.main-container {
+    height: 562px;
+    position: relative;
+}
+
+.main-center {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.linketinder-entrar {
+    width: 600px;
+    height: 150px;
+    padding-bottom: 50px;
+}
+
+.opcoes-entrar {
+    padding-top: 50px;
+    width: 600px;
+    height: 100px;
+}
+
+
+/* 
+.strokeme {
+    color: #eb4646;
+    font-size: 64px;
+    font-kerning: normal;
+    text-shadow: -3px -3px 5px #000, 3px -3px 5px #000, -3px 3px 5px #000, 3px 3px 5px #000;
+} */
+
+p {
+    text-align: center;
+}
+
+.btn-lg {
+    font-weight: bold;
+}
+
+#botao-empresa {
+    color: white;
+    background-color: transparent;
+    border: 4px white solid;
+}
+
+#botao-empresa:hover {
+    background-color: white;
+    color: #ee0101;
+}
+
+#botao-candidato {
+    color: white;
+    background-color: transparent;
+    border: 4px white solid;
+}
+
+#botao-candidato:hover {
+    background-color: white;
+    color: #ee0101;
+}
+
+#link {
+    color: whitesmoke;
+    text-decoration: underline;
+}
+
+#link:hover {
+    color: #ee0101;
+    background-color: whitesmoke;
+}
+
+#cadastro-empresa {
+    color: #fff;
+    background-color: transparent;
+}
+
+#cadastro-candidato {
+    color: #fff;
+    background-color: transparent;
+}
+
+#cadastro-empresa:hover {
+    color: #ee0101;
+    background-color: #fff;
+}
+
+#cadastro-candidato:hover {
+    color: #ee0101;
+    background-color: #fff;
+}
