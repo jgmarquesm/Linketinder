@@ -13,10 +13,12 @@
     "devDependencies": {
         "@types/bootstrap": "^5.2.3",
         "@types/jquery": "^3.5.14",
+        "@types/plotly.js": "^2.12.2",
         "bootstrap": "^5.2.1",
         "copy-webpack-plugin": "^11.0.0",
         "css-loader": "^6.7.1",
         "jquery": "^3.6.1",
+        "plotly.js": "^2.14.0",
         "postcss-loader": "^7.0.1",
         "sass": "^1.54.9",
         "sass-loader": "^13.0.2",

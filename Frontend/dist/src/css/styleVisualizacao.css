@@ -1,0 +1,112 @@
+.body {
+    background-color: #ee0101;
+    font-family: 'Ubuntu', sans-serif;
+    text-align: center;
+    color: #fff;
+}
+
+nav {
+    background-color: #ce0000;
+    height: 70px;
+}
+
+#logo-nav {
+    width: 200px;
+}
+
+#logo-nav:hover {
+    transition-duration: 300ms;
+    width: 205px;
+}
+
+.botao-fake:hover {
+    transition-duration: 400ms;
+    background-color: white;
+    text-decoration: none;
+    color: #ee0101;
+}
+
+.center-botao-fake {
+    margin-top: 21%;
+}
+
+.botao-fake {
+    color: white;
+    margin: 2px;
+    padding: 10px;
+    border: #fff 3px solid;
+    border-radius: 10px;
+    font-weight: bold;
+}
+
+.avatar {
+    width: 200px;
+    border-radius: 10%;
+    filter: grayscale(1);
+    padding: 15px;
+}
+
+.avatar:hover {
+    transition-duration: 450ms;
+    filter: none;
+    border-radius: 50%;
+}
+
+#nome-candidato {
+    font-size: 32px;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+}
+
+.caixa-texto {
+    background-color: #ce0000;
+    margin: 10px 250px 10px 250px;
+    border-radius: 10px;
+    padding: 10px;
+    text-align: justify;
+}
+
+h2 {
+    text-align: center;
+    font-size: 24px;
+}
+
+p {
+    padding: 10px;
+    font-size: 14px;
+}
+
+li {
+    padding: 10px;
+    font-size: 14px;
+    text-align: left;
+}
+
+.grafico {
+    background-color: #ce0000;
+    margin: 20px 250px 10px 250px;
+    border-radius: 10px;
+    height: 500px;
+}
+
+#tabela {
+    margin: 25px;
+    color: #000;
+}
+
+table,
+tr,
+th,
+td {
+    border-collapse: collapse;
+    border: 3px solid rgb(136, 58, 58);
+}
+
+#coluna-curtir {
+    width: 30px;
+}
+
+.botao-curtir:hover {
+    background-color: #ee0101;
+}
