@@ -5,12 +5,12 @@ export class Empresa {
 
     toString(): string {
         return `"nomeEmpresa": ${this.nomeEmpresa},
-        "cnpj": ${this.cnpj},
-        "fone": ${this.telefone},
-        "cep": ${this.cep},
-        "resumo": ${this.resumo},
-        "ramo": ${this.ramo},
-        "qtdFunc": ${this.qtdFunc}
+"cnpj": ${this.cnpj},
+"fone": ${this.telefone},
+"cep": ${this.cep},
+"resumo": ${this.resumo},
+"ramo": ${this.ramo},
+"qtdFunc": ${this.qtdFunc}
         `
     }
 

@@ -69,16 +69,6 @@ p {
     color: #ee0101;
 }
 
-#link {
-    color: whitesmoke;
-    text-decoration: underline;
-}
-
-#link:hover {
-    color: #ee0101;
-    background-color: whitesmoke;
-}
-
 #cadastro-empresa {
     color: #fff;
     background-color: transparent;
@@ -97,4 +87,12 @@ p {
 #cadastro-candidato:hover {
     color: #ee0101;
     background-color: #fff;
+}
+
+#modal-cadastro-empresa {
+    color: #000;
+}
+
+#modal-cadastro-candidato {
+    color: #000;
 }

@@ -5,10 +5,10 @@ export class Vaga {
 
     toString(): string {
         return `"nomeVaga": ${this.nomeVaga},
-        "dep": ${this.departamento},
-        "level": ${this.senioridade},
-        "skills": ${[this.requiredSkills]},
-        "desc": ${this.descricao}`
+"dep": ${this.departamento},
+"skills": ${[this.requiredSkills]},
+"desc": ${this.descricao},
+"level": ${this.senioridade}`
     }
 
     retornoAPI(): JSON {

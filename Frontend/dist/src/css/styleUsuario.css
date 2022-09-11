@@ -21,8 +21,8 @@ nav {
 
 .botao-fake:hover {
     transition-duration: 400ms;
-    background-color: white;
     text-decoration: none;
+    background-color: white;
     color: #ee0101;
 }
 
@@ -34,6 +34,7 @@ nav {
     color: white;
     margin: 2px;
     padding: 10px;
+    text-decoration: none;
     border: #fff 3px solid;
     border-radius: 10px;
     font-weight: bold;
@@ -52,7 +53,7 @@ nav {
     border-radius: 50%;
 }
 
-#nome-candidato {
+#nome {
     font-size: 32px;
     color: white;
     font-weight: bold;
