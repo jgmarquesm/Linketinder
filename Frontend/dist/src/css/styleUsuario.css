@@ -90,3 +90,8 @@ li {
     border-radius: 10px;
     height: 500px;
 }
+
+#modal-cadastro-vaga {
+    text-align: left;
+    color: #000;
+}

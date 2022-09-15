@@ -6,7 +6,7 @@ export class Vaga {
     toString(): string {
         return `"nomeVaga": ${this.nomeVaga},
 "dep": ${this.departamento},
-"skills": ${[this.requiredSkills]},
+"skills": "["${this.requiredSkills}"]",
 "desc": ${this.descricao},
 "level": ${this.senioridade}`
     }

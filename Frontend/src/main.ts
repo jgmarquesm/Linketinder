@@ -3,20 +3,18 @@ import { Vaga } from './vagas';
 import { Empresa } from './empresa';
 import { Candidato } from './candidato';
 
+var candidato = new Candidato("Juvenal", "", "", "", "", "", "Skill1, Skill2, Skill3", "", "", "", "", "RESUMINDO EU")
+
 // Arrays
 var vagas: Array<Vaga> = new Array(); 
 var empresas: Array<Empresa> = new Array();
 var candidatos: Array<Candidato> = new Array();
 
-// Modais
-const elementCadEmpresas = document.getElementById("modal-cadastro-empresa") as HTMLInputElement;
-const modalCadEmpresas = new Modal(elementCadEmpresas);
-
-const elementCadCandidatos = document.getElementById("modal-cadastro-candidato") as HTMLInputElement;
-const modalCadCandidatos = new Modal(elementCadCandidatos);
-
-const elementCadVaga = document.getElementById("modal-cadastro-vaga") as HTMLInputElement;
-const modalCadVaga = new Modal(elementCadVaga);
+// Listagem
+var listarVagas = document.getElementById("lista-vagas") as HTMLElement;
+var nomeCandidato = document.getElementById("nome") as HTMLElement;
+var listarSkills = document.getElementById("lista-skills") as HTMLElement;
+var sobreMimCand = document.getElementById("texto-about") as HTMLElement;
 
 // Botões
 
@@ -40,16 +38,12 @@ if (botaoEmpresas){
     botaoEmpresas.onclick = function(): void {
         window.location.href="pageEmpresas.html";
     }
-} else {
-    alert("Erro inesperado!")
 }
 
 if (botaoCandidatos){
     botaoCandidatos.onclick = function(): void {
         window.location.href="pageCandidatos.html";
     }
-} else {
-    alert("Erro inesperado!")
 }
 
 // Abrindo Modais
@@ -57,28 +51,22 @@ if (botaoCandidatos){
 // Cadastro Empresa
 if (botaoCadEmpresas){
     botaoCadEmpresas.onclick = function() {
-        modalCadEmpresas.show();
+        $("#modal-cadastro-empresa").modal("show");
     }
-} else {
-    alert("Erro inesperado!")
 }
 
 // Cadastro Candidato
 if (botaoCadCandidatos){
     botaoCadCandidatos.onclick = function() {
-        modalCadCandidatos.show();
+        $("#modal-cadastro-candidato").modal("show");
     }
-} else {
-    alert("Erro inesperado!")
 }
 
 // Cadastro Vaga
 if (botaoCadVaga){
     botaoCadVaga.onclick = function() {
-        modalCadVaga.show();
+        $("#modal-cadastro-vaga").modal("show");
     }
-} else {
-    alert("Erro inesperado!")
 }
 
 // Confirmando Cadastro
@@ -103,8 +91,6 @@ if (botaoConfirmarCadEmpresa){
 
         window.location.href="pageEmpresas.html";
     }
-} else {
-    alert("Erro inesperado!")
 }
 
 // Candidato
@@ -125,28 +111,57 @@ if (botaoConfirmarCadCandidato){
         let levelCandidato = document.getElementById("cad-cand-level") as HTMLInputElement;
         let resumoCandidato = document.getElementById("cad-cand-resumo") as HTMLInputElement;
 
-        let candidato: Candidato = new Candidato(nomeCandidato.value, cpfCandidato.value, foneCandidato.value, 
+        candidato = new Candidato(nomeCandidato.value, cpfCandidato.value, foneCandidato.value, 
             formacaoCandidato.value, linkedinCandidato.value, portifolioCandidato.value, skillCandidato.value, 
             xpCandidatoEmp.value, xpCandidatoCargo.value, xpCandidatoTempo.value, levelCandidato.value,
             resumoCandidato.value)
         
         candidatos.push(candidato);
-        console.log(candidatos);
 
-        // window.location.href="pageCandidatos.html";
+        window.location.href="pageCandidatos.html";
     }
-} else {
-    alert("Erro inesperado!")
 }
 
 if (botaoConfirmarCadVaga){
 
     botaoConfirmarCadVaga.onclick = function(): void {
 
-        console.log("Cadastro de vagas");
+        let nomeVaga = document.getElementById("cad-vaga-nome") as HTMLInputElement;
+        let departamento = document.getElementById("cad-vaga-dep") as HTMLInputElement;
+        let descricaoVaga = document.getElementById("cad-vaga-desc") as HTMLInputElement;
+        let senioridadeVaga = document.getElementById("cad-vaga-xp") as HTMLInputElement;
+        let skillsVaga = document.getElementById("cad-vaga-skill") as HTMLInputElement;
+
+        let vaga = new Vaga(nomeVaga.value, departamento.value, descricaoVaga.value, 
+            senioridadeVaga.value, skillsVaga.value);
+        
+        vagas.push(vaga);
+        $("#modal-cadastro-vaga").modal("hide");
+        
+        listarVagas.innerHTML = ""
+
+        for (let vaga of vagas){
+            listarVagas.innerHTML += `
+                <li>${vaga.nomeVaga}</li>
+            `
+        }
+
     }
-} else {
-    alert("Erro inesperado!")
+}
+
+function carregarDadosCand(): void {
+    
+    let listaHabilidades: Array<string> = candidato.skill.split(",");
+
+    nomeCandidato.innerHTML = candidato.nomeCandidato;
+    sobreMimCand.innerHTML = candidato.resumo;
+    listarSkills.innerHTML = "";
+
+    for (let hab of listaHabilidades){
+        listarSkills.innerHTML += `
+        <li>${hab}</li>
+        `
+    }
 }
 
 
