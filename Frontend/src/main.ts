@@ -1,14 +1,45 @@
-import { Modal } from 'bootstrap';
 import { Vaga } from './vagas';
 import { Empresa } from './empresa';
 import { Candidato } from './candidato';
-
-var candidato = new Candidato("Juvenal", "", "", "", "", "", "Skill1, Skill2, Skill3", "", "", "", "", "RESUMINDO EU")
 
 // Arrays
 var vagas: Array<Vaga> = new Array(); 
 var empresas: Array<Empresa> = new Array();
 var candidatos: Array<Candidato> = new Array();
+
+// Candidatos, Empresas e Vagas Padrões
+var candidatoPadrao1 = new Candidato("Candidato 1", "", "", "", "", "", "", "", "", "", "", "")
+candidatos.push(candidatoPadrao1)
+var candidatoPadrao2 = new Candidato("Candidato 2", "", "", "", "", "", "", "", "", "", "", "")
+candidatos.push(candidatoPadrao2)
+var candidatoPadrao3 = new Candidato("Candidato 3", "", "", "", "", "", "", "", "", "", "", "")
+candidatos.push(candidatoPadrao3)
+var candidatoPadrao4 = new Candidato("Candidato 4", "", "", "", "", "", "", "", "", "", "", "")
+candidatos.push(candidatoPadrao4)
+var candidatoPadrao5 = new Candidato("Candidato 5", "", "", "", "", "", "", "", "", "", "", "")
+candidatos.push(candidatoPadrao5)
+
+var empresaPadrao1 = new Empresa("", "", "", "", "", "", 1)
+empresas.push(empresaPadrao1)
+var empresaPadrao2 = new Empresa("", "", "", "", "", "", 2)
+empresas.push(empresaPadrao2)
+var empresaPadrao3 = new Empresa("", "", "", "", "", "", 3)
+empresas.push(empresaPadrao3)
+var empresaPadrao4 = new Empresa("", "", "", "", "", "", 4)
+empresas.push(empresaPadrao4)
+var empresaPadrao5 = new Empresa("", "", "", "", "", "", 5)
+empresas.push(empresaPadrao5)
+
+var vagaPadrao1 = new Vaga("", "", "", "","")
+vagas.push(vagaPadrao1)
+var vagaPadrao2 = new Vaga("", "", "", "","")
+vagas.push(vagaPadrao2)
+var vagaPadrao3 = new Vaga("", "", "", "","")
+vagas.push(vagaPadrao3)
+var vagaPadrao4 = new Vaga("", "", "", "","")
+vagas.push(vagaPadrao4)
+var vagaPadrao5 = new Vaga("", "", "", "","")
+vagas.push(vagaPadrao5)
 
 // Listagem
 var listarVagas = document.getElementById("lista-vagas") as HTMLElement;
@@ -111,13 +142,13 @@ if (botaoConfirmarCadCandidato){
         let levelCandidato = document.getElementById("cad-cand-level") as HTMLInputElement;
         let resumoCandidato = document.getElementById("cad-cand-resumo") as HTMLInputElement;
 
-        candidato = new Candidato(nomeCandidato.value, cpfCandidato.value, foneCandidato.value, 
+        var candidato = new Candidato(nomeCandidato.value, cpfCandidato.value, foneCandidato.value, 
             formacaoCandidato.value, linkedinCandidato.value, portifolioCandidato.value, skillCandidato.value, 
             xpCandidatoEmp.value, xpCandidatoCargo.value, xpCandidatoTempo.value, levelCandidato.value,
             resumoCandidato.value)
         
         candidatos.push(candidato);
-
+        localStorage.setItem(candidatos.length.toString(), candidato.toString())
         window.location.href="pageCandidatos.html";
     }
 }
@@ -145,25 +176,6 @@ if (botaoConfirmarCadVaga){
                 <li>${vaga.nomeVaga}</li>
             `
         }
-
     }
 }
-
-function carregarDadosCand(): void {
-    
-    let listaHabilidades: Array<string> = candidato.skill.split(",");
-
-    nomeCandidato.innerHTML = candidato.nomeCandidato;
-    sobreMimCand.innerHTML = candidato.resumo;
-    listarSkills.innerHTML = "";
-
-    for (let hab of listaHabilidades){
-        listarSkills.innerHTML += `
-        <li>${hab}</li>
-        `
-    }
-}
-
-
-
 

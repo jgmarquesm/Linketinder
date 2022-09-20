@@ -14,7 +14,7 @@
     <title>Linketinder:: Candidato</title>
 </head>
 
-<body class="body" onload="carregarDadosCand()">
+<body class="body" onload="carregarDados()">
     <nav>
         <ul class="nav justify-content-between">
             <li class="nav-item" id="item-logo">
@@ -57,7 +57,30 @@
     <footer>
         <p>&#171&#171 João Gabriel - 2022 &#187&#187</p>
     </footer>
+    <script>
+        let candLocalStorage = JSON.parse(localStorage.getItem("6"));
+        console.log(candLocalStorage)
 
+        function carregarDados() {
+
+            let listaHabilidades = candLocalStorage["skill"].split(", ");
+
+            var nomeCandidato = document.getElementById("nome");
+            nomeCandidato.innerText = candLocalStorage.nomeCandidato;
+            nomeCandidato = candLocalStorage["nomeCandidato"];
+            var sobreMimCand = document.getElementById("texto-about");
+            sobreMimCand.innerText = candLocalStorage.resumo;
+            console.log(sobreMimCand);
+            var listarSkills = document.getElementById("lista-skills");
+            listarSkills = "";
+
+            for (let hab of listaHabilidades) {
+                listarSkills.innerHTML += `
+                <li>${hab}</li>
+                `
+            }
+        }
+    </script>
     <script src="../app.min.js"></script>
 </body>
 
