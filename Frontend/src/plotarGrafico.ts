@@ -1,5 +1,17 @@
-// import { Vaga } from "./vagas";
-// import * as Plotly from 'plotly.js';
+import * as Plotly from 'plotly.js';
+import { candidatos } from './main';
+
+// function skills(){
+//     var listaSkills: Array<string> = new Array();
+//     for (let cand of candidatos){
+//         let skill: Array<string> = cand.skill.split(", ")
+//         for (let hab of skill){
+//             if (!(hab in listaSkills)){
+//                 listaSkills.push(hab)
+//             }
+//         }
+//     }
+// }
 
 // export default function plotar(){
 
@@ -16,7 +28,7 @@
 //             }
 //         }
 
-//         var data = [trace1]
+//         var data: any = [trace1]
 
 //         var layout = {
 //             title: 'Participantes por Habilidade',
@@ -33,4 +45,5 @@
 //         }
 
 //         Plotly.newPlot('myplot', data, layout, config);
+        // console.log(skills)
 // }

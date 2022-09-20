@@ -32,7 +32,7 @@
     </nav>
     <main>
         <div>
-            <img class="avatar" src="../img/profile-image.png" alt="Foto de perfil">
+            <img class="avatar" src="../img/profile-image.png" alt="Foto de perfil" id="avatarCand">
             <p id="nome">Seu nome aqui</p>
         </div>
         <div class="caixa-texto" id="about">
@@ -57,31 +57,47 @@
     <footer>
         <p>&#171&#171 João Gabriel - 2022 &#187&#187</p>
     </footer>
+    <script src="../app.min.js"></script>
     <script>
-        let candLocalStorage = JSON.parse(localStorage.getItem("6"));
-        console.log(candLocalStorage)
+        import candidatos from "../src/main"
 
         function carregarDados() {
 
-            let listaHabilidades = candLocalStorage["skill"].split(", ");
+            var novoCadastro = sessionStorage.getItem("novo");
 
-            var nomeCandidato = document.getElementById("nome");
-            nomeCandidato.innerText = candLocalStorage.nomeCandidato;
-            nomeCandidato = candLocalStorage["nomeCandidato"];
-            var sobreMimCand = document.getElementById("texto-about");
-            sobreMimCand.innerText = candLocalStorage.resumo;
-            console.log(sobreMimCand);
-            var listarSkills = document.getElementById("lista-skills");
-            listarSkills = "";
+            if (novoCadastro) {
+                var existeCandidato = localStorage.getItem(`cand-${candidatos.length}`); // Certeza que vai quebrar kkkkk
 
-            for (let hab of listaHabilidades) {
-                listarSkills.innerHTML += `
-                <li>${hab}</li>
-                `
+                //var avatar = document.getElementById("avatarCand");
+                //avatar.src = localStorage.getItem(`avatarCandidato${JSON.parse(existeCandidato).nomeCandidato}`);
+
+            } else {
+                var existeCandidato = localStorage.getItem("CandidatoStd")
+            }
+
+            if (existeCandidato) {
+
+                let candLocalStorage = JSON.parse(existeCandidato);
+                console.log(candLocalStorage)
+
+                let listaHabilidades = candLocalStorage.skill.split(", ");
+
+                let nomeCandidato = document.getElementById("nome");
+                let sobreMimCand = document.getElementById("texto-about");
+                let listarSkills = document.getElementById("lista-skills");
+
+                nomeCandidato.innerText = candLocalStorage.nomeCandidato;
+                sobreMimCand.innerText = candLocalStorage.resumo;
+                listarSkills.innerHTML = "";
+
+                for (let hab of listaHabilidades) {
+                    listarSkills.innerHTML += `
+                    <li>${hab}</li>
+                    `
+                }
             }
         }
     </script>
-    <script src="../app.min.js"></script>
 </body>
 
 </html>

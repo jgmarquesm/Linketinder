@@ -1,45 +1,73 @@
 import { Vaga } from './vagas';
 import { Empresa } from './empresa';
 import { Candidato } from './candidato';
+// import plotar from './plotarGrafico';
 
 // Arrays
 var vagas: Array<Vaga> = new Array(); 
 var empresas: Array<Empresa> = new Array();
-var candidatos: Array<Candidato> = new Array();
+export var candidatos: Array<Candidato> = new Array();
 
-// Candidatos, Empresas e Vagas Padrões
+// Mocks: Candidatos, Empresas e Vagas Padrões
 var candidatoPadrao1 = new Candidato("Candidato 1", "", "", "", "", "", "", "", "", "", "", "")
 candidatos.push(candidatoPadrao1)
+localStorage.setItem("CandidatoStd", candidatoPadrao1.toString())
+
 var candidatoPadrao2 = new Candidato("Candidato 2", "", "", "", "", "", "", "", "", "", "", "")
 candidatos.push(candidatoPadrao2)
+localStorage.setItem(`cand-${candidatos.length.toString()}`, candidatoPadrao2.toString())
+
 var candidatoPadrao3 = new Candidato("Candidato 3", "", "", "", "", "", "", "", "", "", "", "")
 candidatos.push(candidatoPadrao3)
+localStorage.setItem(`cand-${candidatos.length.toString()}`, candidatoPadrao3.toString())
+
 var candidatoPadrao4 = new Candidato("Candidato 4", "", "", "", "", "", "", "", "", "", "", "")
 candidatos.push(candidatoPadrao4)
+localStorage.setItem(`cand-${candidatos.length.toString()}`, candidatoPadrao4.toString())
+
 var candidatoPadrao5 = new Candidato("Candidato 5", "", "", "", "", "", "", "", "", "", "", "")
 candidatos.push(candidatoPadrao5)
+localStorage.setItem(`cand-${candidatos.length.toString()}`, candidatoPadrao5.toString())
 
 var empresaPadrao1 = new Empresa("", "", "", "", "", "", 1)
 empresas.push(empresaPadrao1)
+localStorage.setItem("EmpresaStd", empresaPadrao1.toString())
+
 var empresaPadrao2 = new Empresa("", "", "", "", "", "", 2)
 empresas.push(empresaPadrao2)
+localStorage.setItem(`emp-${empresas.length.toString()}`, empresaPadrao2.toString())
+
 var empresaPadrao3 = new Empresa("", "", "", "", "", "", 3)
 empresas.push(empresaPadrao3)
+localStorage.setItem(`emp-${empresas.length.toString()}`, empresaPadrao3.toString())
+
 var empresaPadrao4 = new Empresa("", "", "", "", "", "", 4)
 empresas.push(empresaPadrao4)
+localStorage.setItem(`emp-${empresas.length.toString()}`, empresaPadrao4.toString())
+
 var empresaPadrao5 = new Empresa("", "", "", "", "", "", 5)
 empresas.push(empresaPadrao5)
+localStorage.setItem(`emp-${empresas.length.toString()}`, empresaPadrao5.toString())
 
 var vagaPadrao1 = new Vaga("", "", "", "","")
 vagas.push(vagaPadrao1)
+localStorage.setItem(`vaga-${vagas.length.toString()}`, vagaPadrao1.toString())
+
 var vagaPadrao2 = new Vaga("", "", "", "","")
 vagas.push(vagaPadrao2)
+localStorage.setItem(`vaga-${vagas.length.toString()}`, vagaPadrao2.toString())
+
 var vagaPadrao3 = new Vaga("", "", "", "","")
 vagas.push(vagaPadrao3)
+localStorage.setItem(`vaga-${vagas.length.toString()}`, vagaPadrao3.toString())
+
 var vagaPadrao4 = new Vaga("", "", "", "","")
 vagas.push(vagaPadrao4)
+localStorage.setItem(`vaga-${vagas.length.toString()}`, vagaPadrao4.toString())
+
 var vagaPadrao5 = new Vaga("", "", "", "","")
 vagas.push(vagaPadrao5)
+localStorage.setItem(`vaga-${vagas.length.toString()}`, vagaPadrao5.toString())
 
 // Listagem
 var listarVagas = document.getElementById("lista-vagas") as HTMLElement;
@@ -148,7 +176,27 @@ if (botaoConfirmarCadCandidato){
             resumoCandidato.value)
         
         candidatos.push(candidato);
-        localStorage.setItem(candidatos.length.toString(), candidato.toString())
+
+        const img: any = document.querySelector('input[type=file]') as Element;
+        const imgPath = img.files[0];
+        const reader = new FileReader();
+
+        // reader.addEventListener("load", function () {
+        //     const result = reader.result?.toString();
+
+        //     if (result){
+        //         return localStorage.setItem(`avatarCandidato${candidato.nomeCandidato}`, result)
+        //     }
+            
+        // }, false);
+
+        // if (imgPath) {
+        //     reader.readAsDataURL(imgPath);
+        // }
+        
+        localStorage.setItem(candidatos.length.toString(), candidato.toString());
+        
+        sessionStorage.setItem("novo", "novo")
         window.location.href="pageCandidatos.html";
     }
 }
@@ -179,3 +227,4 @@ if (botaoConfirmarCadVaga){
     }
 }
 
+// var plot = plotar()

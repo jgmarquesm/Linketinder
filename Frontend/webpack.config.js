@@ -30,6 +30,10 @@ module.exports = {
                 exclude: /node_modules/
             },
             {
+                test: /\.(js | ts)$/,
+                loader: 'ify-loader'
+            },
+            {
                 test: /\.(css|scss|sass)$/,
                 use: [
                     'style-loader',

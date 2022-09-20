@@ -4,11 +4,11 @@ export class Vaga {
         public requiredSkills: string, public descricao: string){}
 
     toString(): string {
-        return `"nomeVaga": ${this.nomeVaga},
-"dep": ${this.departamento},
-"skills": "["${this.requiredSkills}"]",
-"desc": ${this.descricao},
-"level": ${this.senioridade}`
+        return `{"nomeVaga": "${this.nomeVaga}",
+"dep": "${this.departamento}",
+"skills": "${this.requiredSkills}",
+"desc": "${this.descricao}",
+"level": "${this.senioridade}"}`
     }
 
     retornoAPI(): JSON {

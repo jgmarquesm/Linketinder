@@ -15,7 +15,7 @@
     <title>Linketinder:: Empresa</title>
 </head>
 
-<body class="body">
+<body class="body" onload="carregarDados()">
     <nav>
         <ul class="nav justify-content-between">
             <li class="nav-item" id="item-logo">
@@ -102,6 +102,64 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="../app.min.js"></script>
+    <script>
+        var trace1 = {
+            type: 'bar',
+            x: ['Italy', 'France', 'Spain', 'USA', 'Argentina'],
+            y: [55, 49, 44, 24, 15],
+            marker: {
+                color: '#ff5252',
+                line: {
+                    width: 2.5,
+                    color: '#fff'
+                }
+            }
+        }
+
+        var data = [trace1]
+
+        var layout = {
+            title: 'Participantes por Habilidade',
+            paper_bgcolor: 'rgba(0,0,0,0)',
+            plot_bgcolor: 'rgba(0,0,0,0)',
+            font: {
+                size: 20,
+                color: '#fff'
+            }
+        };
+
+        var config = {
+            responsive: true
+        }
+
+        Plotly.newPlot('myplot', data, layout, config);
+
+        function carregarDados() {
+
+            var novoCadastro = sessionStorage.getItem("novo");
+
+            if (novoCadastro) {
+                var existeEmpresa = localStorage.getItem(`${localStorage.length}`);
+
+                //var avatar = document.getElementById("avatarEmp");
+                //avatar.src = localStorage.getItem(`avatarEmpresa${JSON.parse(existeEmpresa).nomeEmpresa}`);
+
+            } else {
+                var existeEmpresa = localStorage.getItem("EmpresaStd")
+            }
+
+            if (existeEmpresa) {
+
+                let empLocalStorage = JSON.parse(existeEmpresa);
+
+                let nomeEmpresa = document.getElementById("nome");
+                let HistoriaEmp = document.getElementById("texto-historia");
+
+                nomeEmpresa.innerText = empLocalStorage.nomeEmpresa;
+                HistoriaEmp.innerText = empLocalStorage.resumo;
+            }
+        }
+    </script>
 </body>
 
 </html>
