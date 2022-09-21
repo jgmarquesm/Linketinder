@@ -10,24 +10,24 @@ export var candidatos: Array<Candidato> = new Array();
 
 // Mocks
 
-// Candidatos
-var candidatoPadrao1 = new Candidato("Candidato Padrão", "", "", "", "", "", "", "", "", "", "", "")
+// Candidato(nomeCandidato, cpf, telefone, formacao, linkedin, portifolio, skill, xpEmpresa, xpCargo, xpTempo, level, resumo)
+var candidatoPadrao1 = new Candidato("Candidato Padrão", "00000000000", "62000000000", "mest", "https://linkedin.com/in/candpadrao", "candpdrao.com", "Skill 1, Skill2, Skill3, Skill4, Skill5, Skill6", "emp0", "cargo0", "60", "sr", "Ola, eu sou o candidato padrao!")
 candidatos.push(candidatoPadrao1)
 localStorage.setItem("CandidatoStd", candidatoPadrao1.toString())
 
-var candidatoPadrao2 = new Candidato("Candidato 2", "", "", "", "", "", "", "", "", "", "", "")
-candidatos.push(candidatoPadrao2)
+var candidatoMock2 = new Candidato("Candidato Mock 2", "11111111111", "62111111111", "posgrad", "https://linkedin.com/in/candmock2", "candmock2.com", "Skill 1, Skill3, Skill4, Skill5", "emp1", "cargo1", "36", "pl", "Ola, eu sou o candidato mock 1!"
+candidatos.push(candidatoMock2)
 
-var candidatoPadrao3 = new Candidato("Candidato 3", "", "", "", "", "", "", "", "", "", "", "")
-candidatos.push(candidatoPadrao3)
+var candidatoMock3 = new Candidato("Candidato Mock 3", "22222222222", "62222222222", "sup", "https://linkedin.com/in/candmock3", "candmock3.com", "Skill 1, Skill2, Skill3, Skill6", "emp1", "cargo1", "38", "pl", "Ola, eu sou o candidato mock 1!"
+candidatos.push(candidatoMock3)
 
-var candidatoPadrao4 = new Candidato("Candidato 4", "", "", "", "", "", "", "", "", "", "", "")
-candidatos.push(candidatoPadrao4)
+var candidatoMock4 = new Candidato("Candidato Mock 4", "33333333333", "62333333333", "tec", "https://linkedin.com/in/candmock4", "candmock4.com", "Skill 1, Skill5", "emp1", "cargo1", "13", "jr", "Ola, eu sou o candidato mock 1!"
+candidatos.push(candidatoMock4)
 
-var candidatoPadrao5 = new Candidato("Candidato 5", "", "", "", "", "", "", "", "", "", "", "")
-candidatos.push(candidatoPadrao5)
+var candidatoMock5 = new Candidato("Candidato Mock 5", "44444444444", "62444444444", "tec", "https://linkedin.com/in/candmock5", "candmock5.com", "Skill 1, Skill2, Skill4", "emp1", "cargo1", "15", "jr", "Ola, eu sou o candidato mock 1!"
+candidatos.push(candidatoMock5)
 
-// Empresas
+// Empresas(cnpj, telefone, cep, historia, ramo, qtdFucionarios)
 var empresaPadrao1 = new Empresa("Empresa Padrão", "00000000000000", "00000000000", "00000000", "Somos a empresa bla0, bla0, bla0...", "Tech", 1)
 empresas.push(empresaPadrao1)
 localStorage.setItem("EmpresaStd", empresaPadrao1.toString())
@@ -44,20 +44,20 @@ empresas.push(empresaPadrao4)
 var empresaPadrao5 = new Empresa("Empresa 5", "44444444444444", "44444444444", "44444444", "Somos a empresa bla4, bla4, bla4...", "Contabilidade", 5)
 empresas.push(empresaPadrao5)
 
-// Vagas
-var vagaPadrao1 = new Vaga("Vaga 1", "", "", "","")
+// Vagas(nomeDaVaga, departamento, requiredSkills, descricao, senioridade)
+var vagaPadrao1 = new Vaga("Vaga 1", "dep1", "Skill1, Skill2, Skill5", "autuar como ...", "jr")
 vagas.push(vagaPadrao1)
 
-var vagaPadrao2 = new Vaga("Vaga 2", "", "", "","")
+var vagaPadrao2 = new Vaga("Vaga 2", "dep2", "Skill1, Skill2, Skill4, Skill5", "autuar como ...", "pl")
 vagas.push(vagaPadrao2)
 
-var vagaPadrao3 = new Vaga("Vaga 3", "", "", "","")
+var vagaPadrao3 = new Vaga("Vaga 3", "dep3","Skill1, Skill2, Skill3, Skill4, Skill5", "autuar como ...", "sr")
 vagas.push(vagaPadrao3)
 
-var vagaPadrao4 = new Vaga("Vaga 4", "", "", "","")
+var vagaPadrao4 = new Vaga("Vaga 4", "dep4", "Skill1, Skill2, Skill3, Skill4, Skill5, Skill6", "autuar como ...", "esp")
 vagas.push(vagaPadrao4)
 
-var vagaPadrao5 = new Vaga("Vaga 5", "", "", "","")
+var vagaPadrao5 = new Vaga("Vaga 5", "dep5", "Skill1", "autuar como ...", "est")
 vagas.push(vagaPadrao5)
 
 
