@@ -1,79 +1,69 @@
 import { Vaga } from './vagas';
 import { Empresa } from './empresa';
 import { Candidato } from './candidato';
-// import plotar from './plotarGrafico';
+import extrairDados from './plotarGrafico';
 
 // Arrays
 var vagas: Array<Vaga> = new Array(); 
 var empresas: Array<Empresa> = new Array();
 export var candidatos: Array<Candidato> = new Array();
 
-// Mocks: Candidatos, Empresas e Vagas Padrões
-var candidatoPadrao1 = new Candidato("Candidato 1", "", "", "", "", "", "", "", "", "", "", "")
+// Mocks
+
+// Candidatos
+var candidatoPadrao1 = new Candidato("Candidato Padrão", "", "", "", "", "", "", "", "", "", "", "")
 candidatos.push(candidatoPadrao1)
 localStorage.setItem("CandidatoStd", candidatoPadrao1.toString())
 
 var candidatoPadrao2 = new Candidato("Candidato 2", "", "", "", "", "", "", "", "", "", "", "")
 candidatos.push(candidatoPadrao2)
-localStorage.setItem(`cand-${candidatos.length.toString()}`, candidatoPadrao2.toString())
 
 var candidatoPadrao3 = new Candidato("Candidato 3", "", "", "", "", "", "", "", "", "", "", "")
 candidatos.push(candidatoPadrao3)
-localStorage.setItem(`cand-${candidatos.length.toString()}`, candidatoPadrao3.toString())
 
 var candidatoPadrao4 = new Candidato("Candidato 4", "", "", "", "", "", "", "", "", "", "", "")
 candidatos.push(candidatoPadrao4)
-localStorage.setItem(`cand-${candidatos.length.toString()}`, candidatoPadrao4.toString())
 
 var candidatoPadrao5 = new Candidato("Candidato 5", "", "", "", "", "", "", "", "", "", "", "")
 candidatos.push(candidatoPadrao5)
-localStorage.setItem(`cand-${candidatos.length.toString()}`, candidatoPadrao5.toString())
 
-var empresaPadrao1 = new Empresa("", "", "", "", "", "", 1)
+// Empresas
+var empresaPadrao1 = new Empresa("Empresa Padrão", "00000000000000", "00000000000", "00000000", "Somos a empresa bla0, bla0, bla0...", "Tech", 1)
 empresas.push(empresaPadrao1)
 localStorage.setItem("EmpresaStd", empresaPadrao1.toString())
 
-var empresaPadrao2 = new Empresa("", "", "", "", "", "", 2)
+var empresaPadrao2 = new Empresa("Empresa 2", "11111111111111", "11111111111", "11111111", "Somos a empresa bla1, bla1, bla1...", "TI", 2)
 empresas.push(empresaPadrao2)
-localStorage.setItem(`emp-${empresas.length.toString()}`, empresaPadrao2.toString())
 
-var empresaPadrao3 = new Empresa("", "", "", "", "", "", 3)
+var empresaPadrao3 = new Empresa("Empresa 3", "22222222222222", "22222222222", "22222222", "Somos a empresa bla2, bla2, bla2...", "Educação", 3)
 empresas.push(empresaPadrao3)
-localStorage.setItem(`emp-${empresas.length.toString()}`, empresaPadrao3.toString())
 
-var empresaPadrao4 = new Empresa("", "", "", "", "", "", 4)
+var empresaPadrao4 = new Empresa("Empresa 4", "33333333333333", "33333333333", "33333333", "Somos a empresa bla3, bla3, bla3...", "Vendas", 4)
 empresas.push(empresaPadrao4)
-localStorage.setItem(`emp-${empresas.length.toString()}`, empresaPadrao4.toString())
 
-var empresaPadrao5 = new Empresa("", "", "", "", "", "", 5)
+var empresaPadrao5 = new Empresa("Empresa 5", "44444444444444", "44444444444", "44444444", "Somos a empresa bla4, bla4, bla4...", "Contabilidade", 5)
 empresas.push(empresaPadrao5)
-localStorage.setItem(`emp-${empresas.length.toString()}`, empresaPadrao5.toString())
 
-var vagaPadrao1 = new Vaga("", "", "", "","")
+// Vagas
+var vagaPadrao1 = new Vaga("Vaga 1", "", "", "","")
 vagas.push(vagaPadrao1)
-localStorage.setItem(`vaga-${vagas.length.toString()}`, vagaPadrao1.toString())
 
-var vagaPadrao2 = new Vaga("", "", "", "","")
+var vagaPadrao2 = new Vaga("Vaga 2", "", "", "","")
 vagas.push(vagaPadrao2)
-localStorage.setItem(`vaga-${vagas.length.toString()}`, vagaPadrao2.toString())
 
-var vagaPadrao3 = new Vaga("", "", "", "","")
+var vagaPadrao3 = new Vaga("Vaga 3", "", "", "","")
 vagas.push(vagaPadrao3)
-localStorage.setItem(`vaga-${vagas.length.toString()}`, vagaPadrao3.toString())
 
-var vagaPadrao4 = new Vaga("", "", "", "","")
+var vagaPadrao4 = new Vaga("Vaga 4", "", "", "","")
 vagas.push(vagaPadrao4)
-localStorage.setItem(`vaga-${vagas.length.toString()}`, vagaPadrao4.toString())
 
-var vagaPadrao5 = new Vaga("", "", "", "","")
+var vagaPadrao5 = new Vaga("Vaga 5", "", "", "","")
 vagas.push(vagaPadrao5)
-localStorage.setItem(`vaga-${vagas.length.toString()}`, vagaPadrao5.toString())
 
-// Listagem
+
+// Listagem na page da empresa
 var listarVagas = document.getElementById("lista-vagas") as HTMLElement;
-var nomeCandidato = document.getElementById("nome") as HTMLElement;
-var listarSkills = document.getElementById("lista-skills") as HTMLElement;
-var sobreMimCand = document.getElementById("texto-about") as HTMLElement;
+
 
 // Botões
 
@@ -85,11 +75,14 @@ const botaoCandidatos = document.getElementById("botao-candidato") as HTMLInputE
 const botaoCadEmpresas = document.getElementById("cadastro-empresa") as HTMLInputElement;
 const botaoCadCandidatos = document.getElementById("cadastro-candidato") as HTMLInputElement;
 const botaoCadVaga = document.getElementById("nova-vaga") as HTMLInputElement;
+const botaoCadSkill = document.getElementById("nova-skill") as HTMLInputElement;
 
 // Confirmação de cadastro
 const botaoConfirmarCadEmpresa = document.getElementById("cad-emp") as HTMLInputElement;
 const botaoConfirmarCadCandidato = document.getElementById("cad-cand") as HTMLInputElement;
 const botaoConfirmarCadVaga = document.getElementById("cad-vaga") as HTMLInputElement;
+const botaoConfirmarCadSkill = document.getElementById("cad-skill") as HTMLInputElement;
+
 
 // Redirecionando
 
@@ -128,6 +121,13 @@ if (botaoCadVaga){
     }
 }
 
+// Cadastro nova Skill
+if (botaoCadSkill){
+    botaoCadSkill.onclick = function() {
+        $("#modal-cadastro-skill").modal("show");
+    }
+}
+
 // Confirmando Cadastro
 
 // Empresa
@@ -148,6 +148,8 @@ if (botaoConfirmarCadEmpresa){
         
         empresas.push(empresa);
 
+        localStorage.setItem("emp-nova", empresa.toString());
+        sessionStorage.setItem("nova", "nova")
         window.location.href="pageEmpresas.html";
     }
 }
@@ -176,31 +178,14 @@ if (botaoConfirmarCadCandidato){
             resumoCandidato.value)
         
         candidatos.push(candidato);
-
-        const img: any = document.querySelector('input[type=file]') as Element;
-        const imgPath = img.files[0];
-        const reader = new FileReader();
-
-        // reader.addEventListener("load", function () {
-        //     const result = reader.result?.toString();
-
-        //     if (result){
-        //         return localStorage.setItem(`avatarCandidato${candidato.nomeCandidato}`, result)
-        //     }
-            
-        // }, false);
-
-        // if (imgPath) {
-        //     reader.readAsDataURL(imgPath);
-        // }
         
-        localStorage.setItem(candidatos.length.toString(), candidato.toString());
-        
+        localStorage.setItem("cand-novo", candidato.toString());
         sessionStorage.setItem("novo", "novo")
         window.location.href="pageCandidatos.html";
     }
 }
 
+// Vaga
 if (botaoConfirmarCadVaga){
 
     botaoConfirmarCadVaga.onclick = function(): void {
@@ -227,4 +212,57 @@ if (botaoConfirmarCadVaga){
     }
 }
 
-// var plot = plotar()
+if (botaoConfirmarCadSkill){
+
+    botaoConfirmarCadSkill.onclick = function(): void {
+        $("#modal-cadastro-skill").modal("hide");
+    }
+}
+
+// Listando Candidatos e Vagas
+
+// Candidatos
+
+var listaCandidatos = document.getElementById("tabela-candidatos") as HTMLElement;
+if (listaCandidatos){
+
+    listaCandidatos.innerHTML = "";
+
+    for (let cand of candidatos){
+        
+        listaCandidatos.innerHTML += `
+        <tr>
+            <td>${cand.formacao}</td>
+            <td>${cand.skill}</td>
+            <td><button class="btn btn-sm btn-danger botao-curtir" id="like-cand-${candidatos.indexOf(cand)}">&#9825;</button></td>
+        </tr>
+        `
+    }
+}
+
+// Vagas
+
+var listaVagas = document.getElementById("tabela-vagas") as HTMLElement;
+
+if (listaVagas){
+
+    listaVagas.innerHTML = "";
+
+    for (let vaga of vagas){
+        console.log(vaga.nomeVaga, vaga.descricao, vaga.senioridade, vaga.requiredSkills)
+        listaVagas.innerHTML += `
+        <tr>
+            <td>${vaga.nomeVaga}</td>
+            <td>${vaga.descricao}</td>
+            <td>${vaga.senioridade}</td>
+            <td>${vaga.requiredSkills}</td>
+            <td><button class="btn btn-sm btn-danger botao-curtir" id="like-vaga-${vagas.indexOf(vaga)}">&#9825;</button></td>
+        </tr>
+        `
+    }
+}
+
+
+// Extraindo dados para o gráfico
+
+// extrairDados()

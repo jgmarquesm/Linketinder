@@ -24,7 +24,7 @@
             </li>
             <li class="nav-item">
                 <div class="center-botao-fake">
-                    <a href="" class="botao-fake" id="nova-skill">Cadastrar nova habilidade</a>
+                    <span class="botao-fake" id="nova-skill">Cadastrar nova habilidade</span>
                     <a href="./visualizaVagas.html" class="botao-fake" id="achar-vagas">Encontrar vagas</a>
                 </div>
             </li>
@@ -53,20 +53,39 @@
                 </li>
             </ul>
         </div>
+        <div class="modal fade" id="modal-cadastro-skill" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Nova Habilidade</h5>
+                    </div>
+                    <div class="modal-body">
+                        <form action="" method="POST">
+                            <div class="form-group">
+                                <label for="typetext">Habilidade</label><br>
+                                <input type="text" class="form-control" id="cad-skill-nome">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" id="cad-skill">Cadastrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </main>
     <footer>
         <p>&#171&#171 João Gabriel - 2022 &#187&#187</p>
     </footer>
     <script src="../app.min.js"></script>
     <script>
-        import candidatos from "../src/main"
-
         function carregarDados() {
 
             var novoCadastro = sessionStorage.getItem("novo");
 
             if (novoCadastro) {
-                var existeCandidato = localStorage.getItem(`cand-${candidatos.length}`); // Certeza que vai quebrar kkkkk
+                // não está funcional pois a cada adição, exclui do local Storage o adicionado anteriormente
+                var existeCandidato = localStorage.getItem("cand-novo");
 
                 //var avatar = document.getElementById("avatarCand");
                 //avatar.src = localStorage.getItem(`avatarCandidato${JSON.parse(existeCandidato).nomeCandidato}`);
@@ -78,10 +97,8 @@
             if (existeCandidato) {
 
                 let candLocalStorage = JSON.parse(existeCandidato);
-                console.log(candLocalStorage)
 
                 let listaHabilidades = candLocalStorage.skill.split(", ");
-
                 let nomeCandidato = document.getElementById("nome");
                 let sobreMimCand = document.getElementById("texto-about");
                 let listarSkills = document.getElementById("lista-skills");

@@ -105,8 +105,10 @@
     <script>
         var trace1 = {
             type: 'bar',
-            x: ['Italy', 'France', 'Spain', 'USA', 'Argentina'],
-            y: [55, 49, 44, 24, 15],
+            // x : localStorage.getItem("skills").split(", "),
+            x: ['Italy', 'France', 'Spain', 'USA', 'Argentina'], // remover essa linha quando implementar plotGrafico.ts
+            // y : localStorage.getItem("candidatos").split(", "),
+            y: [55, 49, 44, 24, 15], // remover essa linha quando implementar plotGrafico.ts
             marker: {
                 color: '#ff5252',
                 line: {
@@ -136,13 +138,10 @@
 
         function carregarDados() {
 
-            var novoCadastro = sessionStorage.getItem("novo");
+            var novoCadastro = sessionStorage.getItem("nova");
 
             if (novoCadastro) {
-                var existeEmpresa = localStorage.getItem(`${localStorage.length}`);
-
-                //var avatar = document.getElementById("avatarEmp");
-                //avatar.src = localStorage.getItem(`avatarEmpresa${JSON.parse(existeEmpresa).nomeEmpresa}`);
+                var existeEmpresa = localStorage.getItem("emp-nova");
 
             } else {
                 var existeEmpresa = localStorage.getItem("EmpresaStd")

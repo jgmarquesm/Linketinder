@@ -1,49 +1,14 @@
 import * as Plotly from 'plotly.js';
 import { candidatos } from './main';
 
-// function skills(){
-//     var listaSkills: Array<string> = new Array();
-//     for (let cand of candidatos){
-//         let skill: Array<string> = cand.skill.split(", ")
-//         for (let hab of skill){
-//             if (!(hab in listaSkills)){
-//                 listaSkills.push(hab)
-//             }
-//         }
-//     }
-// }
 
-// export default function plotar(){
+ export default function extrairDados(){
 
-//         var trace1 = {
-//             type: 'bar',
-//             x: ['Italy', 'France', 'Spain', 'USA', 'Argentina'],
-//             y: [55, 49, 44, 24, 15],
-//             marker: {
-//                 color: '#ff5252',
-//                 line: {
-//                     width: 2.5,
-//                     color: '#fff'
-//                 }
-//             }
-//         }
+        // essa função irá extrair o dados para a plotagem do gráfico e os salvará no localStorage 
+        // de modo que aplicação consiga consumir esses dados usando uma tag script no body do HTML
 
-//         var data: any = [trace1]
+        // Após implementar essa extração dos dados, devo implementar a lógica do add nova habilidade 
+        // localizada na página do candidato
 
-//         var layout = {
-//             title: 'Participantes por Habilidade',
-//             paper_bgcolor: 'rgba(0,0,0,0)',
-//             plot_bgcolor: 'rgba(0,0,0,0)',
-//             font: {
-//                 size: 20,
-//                 color: '#fff'
-//             }
-//         };
-
-//         var config = {
-//             responsive: true
-//         }
-
-//         Plotly.newPlot('myplot', data, layout, config);
-        // console.log(skills)
-// }
+        // Também tenho que formatar os mocks
+}
