@@ -1,6 +1,8 @@
 export class Candidato {
-    
-     constructor(public nomeCandidato: string, public cpf: string, public telefone: string,
+
+    public listadeHabilidades = this.skill.split(", ");
+
+    constructor(public nomeCandidato: string, public cpf: string, public telefone: string,
         public formacao: string, public linkedin: string, public portifolio: string, 
         public skill: string, public xpEmpresa: string, public xpCargo: string, 
         public xpTempo: string, public level: string, public resumo: string){}
@@ -22,5 +24,13 @@ export class Candidato {
     retornoAPI(): JSON {
         return JSON.parse(this.toString());
     }
-    
+
+    habilidades(): string[] { 
+        return this.listadeHabilidades;
+    }
+
+    addHabilidade(hab: string): void {
+        this.listadeHabilidades.push(hab);
+    }
+
 }
