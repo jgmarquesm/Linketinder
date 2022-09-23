@@ -11,7 +11,7 @@ import { candidatos } from './main';
 
         for (let hab of cand.habilidades()){
 
-            if (! (hab in listaDeSkillsUnicas)){
+            if (!listaDeSkillsUnicas.includes(hab)){
 
                 listaDeSkillsUnicas.push(hab);
             }
