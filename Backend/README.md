@@ -1,2 +1,0 @@
-# Linketinder
-ZG Hero Project
