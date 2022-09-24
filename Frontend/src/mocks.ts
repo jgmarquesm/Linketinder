@@ -6,20 +6,20 @@ import { candidatos, empresas, vagas } from "./main"
 export default function iniciaMocks() {
 
     // Candidato(nomeCandidato, cpf, telefone, formacao, linkedin, portifolio, skill, xpEmpresa, xpCargo, xpTempo, level, resumo)
-    var candidatoMock1 = new Candidato("Candidato Padrão", "00000000000", "62000000000", "mest", "https://linkedin.com/in/candpadrao", "candpdrao.com", "Skill1, Skill2, Skill3, Skill4, Skill5, Skill6", "emp0", "cargo0", "60", "sr", "Ola, eu sou o candidato padrao!")
+    var candidatoMock1 = new Candidato("Candidato Padrão", "00000000000", "62000000000", "mest", "https://linkedin.com/in/candpadrao", "candpdrao.com", "Skill1, Skill2, Skill3, Skill4, Skill5, Skill6", "emp0", "cargo0", "60", "sr", "Olá, eu sou o candidato padrão!")
     candidatos.push(candidatoMock1)
     localStorage.setItem("CandidatoStd", candidatoMock1.toString())
 
-    var candidatoMock2 = new Candidato("Candidato Mock 2", "11111111111", "62111111111", "posgrad", "https://linkedin.com/in/candmock2", "candmock2.com", "Skill1, Skill3, Skill4, Skill5", "emp1", "cargo1", "36", "pl", "Ola, eu sou o candidato mock 2!")
+    var candidatoMock2 = new Candidato("Candidato Mock 2", "11111111111", "62111111111", "posgrad", "https://linkedin.com/in/candmock2", "candmock2.com", "Skill1, Skill3, Skill4, Skill5", "emp1", "cargo1", "36", "pl", "Olá, eu sou o candidato mock 2!")
     candidatos.push(candidatoMock2)
 
-    var candidatoMock3 = new Candidato("Candidato Mock 3", "22222222222", "62222222222", "sup", "https://linkedin.com/in/candmock3", "candmock3.com", "Skill1, Skill2, Skill3, Skill6", "emp1", "cargo1", "38", "pl", "Ola, eu sou o candidato mock 3!")
+    var candidatoMock3 = new Candidato("Candidato Mock 3", "22222222222", "62222222222", "sup", "https://linkedin.com/in/candmock3", "candmock3.com", "Skill1, Skill2, Skill3, Skill6", "emp1", "cargo1", "38", "pl", "Olá, eu sou o candidato mock 3!")
     candidatos.push(candidatoMock3)
 
-    var candidatoMock4 = new Candidato("Candidato Mock 4", "33333333333", "62333333333", "tec", "https://linkedin.com/in/candmock4", "candmock4.com", "Skill1, Skill5", "emp1", "cargo1", "13", "jr", "Ola, eu sou o candidato mock 4!")
+    var candidatoMock4 = new Candidato("Candidato Mock 4", "33333333333", "62333333333", "tec", "https://linkedin.com/in/candmock4", "candmock4.com", "Skill1, Skill2", "emp1", "cargo1", "13", "jr", "Olá, eu sou o candidato mock 4!")
     candidatos.push(candidatoMock4)
 
-    var candidatoMock5 = new Candidato("Candidato Mock 5", "44444444444", "62444444444", "tec", "https://linkedin.com/in/candmock5", "candmock5.com", "Skill1, Skill2, Skill4", "emp1", "cargo1", "15", "jr", "Ola, eu sou o candidato mock 5!")
+    var candidatoMock5 = new Candidato("Candidato Mock 5", "44444444444", "62444444444", "tec", "https://linkedin.com/in/candmock5", "candmock5.com", "Skill1, Skill2, Skill4", "emp1", "cargo1", "15", "jr", "Olá, eu sou o candidato mock 5!")
     candidatos.push(candidatoMock5)
 
     // Empresas(cnpj, telefone, cep, historia, ramo, qtdFucionarios)
@@ -40,19 +40,23 @@ export default function iniciaMocks() {
     empresas.push(empresaMock5)
 
     // Vagas(nomeDaVaga, departamento, requiredSkills, descricao, senioridade)
-    var vagaMock1 = new Vaga("Vaga Mock 1", "dep1", "Skill1, Skill2, Skill5", "autuar como ...", "jr")
+    var vagaMock1 = new Vaga("Vaga Mock 1", "dep1", "jr", "Skill1, Skill2, Skill5", "atuar como ...")
     vagas.push(vagaMock1)
 
-    var vagaMock2 = new Vaga("Vaga Mock 2", "dep2", "Skill1, Skill2, Skill4, Skill5", "autuar como ...", "pl")
+    var vagaMock2 = new Vaga("Vaga Mock 2", "dep2", "pl", "Skill1, Skill2, Skill4, Skill5", "atuar como ...")
     vagas.push(vagaMock2)
 
-    var vagaMock3 = new Vaga("Vaga Mock 3", "dep3","Skill1, Skill2, Skill3, Skill4, Skill5", "autuar como ...", "sr")
+    var vagaMock3 = new Vaga("Vaga Mock 3", "dep3", "sr", "Skill1, Skill2, Skill3, Skill4, Skill5", "atuar como ...")
     vagas.push(vagaMock3)
 
-    var vagaMock4 = new Vaga("Vaga Mock 4", "dep4", "Skill1, Skill2, Skill3, Skill4, Skill5, Skill6", "autuar como ...", "esp")
+    var vagaMock4 = new Vaga("Vaga Mock 4", "dep4", "esp", "Skill1, Skill2, Skill3, Skill4, Skill5, Skill6", "atuar como ...")
     vagas.push(vagaMock4)
 
-    var vagaMock5 = new Vaga("Vaga Mock 5", "dep5", "Skill1", "autuar como ...", "est")
+    var vagaMock5 = new Vaga("Vaga Mock 5", "dep5",  "est", "Skill3", "atuar como ...")
     vagas.push(vagaMock5)
+
+    let listaDeVagas = [vagaMock1.nomeVaga, vagaMock2.nomeVaga, vagaMock3.nomeVaga, vagaMock4.nomeVaga
+        , vagaMock5.nomeVaga];
+    localStorage.setItem("vagas", listaDeVagas.toString())
 
 }

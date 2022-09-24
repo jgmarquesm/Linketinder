@@ -11,6 +11,7 @@ export class Candidato {
         return `{"nomeCandidato": "${this.nomeCandidato}",
 "cpf": "${this.cpf}",
 "fone": "${this.telefone}",
+"formacao": "${this.formacao}",
 "linkedin": "${this.linkedin}",
 "portifolio": "${this.portifolio}",
 "skill": "${this.skill}",

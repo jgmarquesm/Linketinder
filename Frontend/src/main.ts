@@ -14,6 +14,7 @@ iniciaMocks()
 
 // Listagem na page da empresa
 var listarVagas = document.getElementById("lista-vagas") as HTMLElement;
+var listarSkills = document.getElementById("lista-skills") as HTMLElement;
 
 
 // Botões
@@ -26,7 +27,7 @@ const botaoCandidatos = document.getElementById("botao-candidato") as HTMLInputE
 const botaoCadEmpresas = document.getElementById("cadastro-empresa") as HTMLInputElement;
 const botaoCadCandidatos = document.getElementById("cadastro-candidato") as HTMLInputElement;
 const botaoCadVaga = document.getElementById("nova-vaga") as HTMLInputElement;
-const botaoCadSkill = document.getElementById("nova-skill") as HTMLInputElement;
+const botaoCadSkill = document.getElementById("nova-hab") as HTMLInputElement;
 
 // Confirmação de cadastro
 const botaoConfirmarCadEmpresa = document.getElementById("cad-emp") as HTMLInputElement;
@@ -40,6 +41,7 @@ const botaoConfirmarCadSkill = document.getElementById("cad-skill") as HTMLInput
 if (botaoEmpresas){
     botaoEmpresas.onclick = function(): void {
         window.location.href="pageEmpresas.html";
+        extrairDados()
     }
 }
 
@@ -75,7 +77,7 @@ if (botaoCadVaga){
 // Cadastro nova Skill
 if (botaoCadSkill){
     botaoCadSkill.onclick = function() {
-        $("#modal-cadastro-skill").modal("show");
+        $("#modal-cadastro-hab").modal("show");
     }
 }
 
@@ -147,8 +149,8 @@ if (botaoConfirmarCadVaga){
         let senioridadeVaga = document.getElementById("cad-vaga-xp") as HTMLInputElement;
         let skillsVaga = document.getElementById("cad-vaga-skill") as HTMLInputElement;
 
-        let vaga = new Vaga(nomeVaga.value, departamento.value, descricaoVaga.value, 
-            senioridadeVaga.value, skillsVaga.value);
+        let vaga = new Vaga(nomeVaga.value, departamento.value, senioridadeVaga.value,
+            skillsVaga.value, descricaoVaga.value);
         
         vagas.push(vaga);
         $("#modal-cadastro-vaga").modal("hide");
@@ -166,7 +168,21 @@ if (botaoConfirmarCadVaga){
 if (botaoConfirmarCadSkill){
 
     botaoConfirmarCadSkill.onclick = function(): void {
-        $("#modal-cadastro-skill").modal("hide");
+
+        let candidatoAtual: any = localStorage.getItem("CandidatoStd");
+        candidatoAtual = candidatoAtual ? JSON.parse(candidatoAtual) : {};
+        let newSkill = document.getElementById("cad-skill-nome") as HTMLInputElement;
+
+        candidatoAtual["skill"] += `, ${newSkill.value}`
+        localStorage.setItem('CandidatoStd', JSON.stringify(candidatoAtual));
+
+        listarSkills.innerHTML += `
+                <li>${newSkill.value}</li>
+            `
+
+        listarSkills.onchange = function(){extrairDados()}
+
+        $("#modal-cadastro-hab").modal("hide");
     }
 }
 
@@ -200,7 +216,6 @@ if (listaVagas){
     listaVagas.innerHTML = "";
 
     for (let vaga of vagas){
-        console.log(vaga.nomeVaga, vaga.descricao, vaga.senioridade, vaga.requiredSkills)
         listaVagas.innerHTML += `
         <tr>
             <td>${vaga.nomeVaga}</td>
@@ -212,8 +227,5 @@ if (listaVagas){
         `
     }
 }
-
-
-// Extraindo dados para o gráfico
 
 extrairDados()

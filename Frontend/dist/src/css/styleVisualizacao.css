@@ -1,12 +1,12 @@
 .body {
-    background-color: #ee0101;
+    background-color: #a10101;
     font-family: 'Ubuntu', sans-serif;
     text-align: center;
     color: #fff;
 }
 
 nav {
-    background-color: #ce0000;
+    background-color: #770000;
     height: 70px;
 }
 
@@ -23,7 +23,7 @@ nav {
     transition-duration: 400ms;
     background-color: white;
     text-decoration: none;
-    color: #ee0101;
+    color: #a10101;
 }
 
 .center-botao-fake {
@@ -39,34 +39,6 @@ nav {
     font-weight: bold;
 }
 
-.avatar {
-    width: 200px;
-    border-radius: 10%;
-    filter: grayscale(1);
-    padding: 15px;
-}
-
-.avatar:hover {
-    transition-duration: 450ms;
-    filter: none;
-    border-radius: 50%;
-}
-
-#nome-candidato {
-    font-size: 32px;
-    color: white;
-    font-weight: bold;
-    text-align: center;
-}
-
-.caixa-texto {
-    background-color: #ce0000;
-    margin: 10px 250px 10px 250px;
-    border-radius: 10px;
-    padding: 10px;
-    text-align: justify;
-}
-
 h2 {
     text-align: center;
     font-size: 24px;
@@ -75,19 +47,6 @@ h2 {
 p {
     padding: 10px;
     font-size: 14px;
-}
-
-li {
-    padding: 10px;
-    font-size: 14px;
-    text-align: left;
-}
-
-.grafico {
-    background-color: #ce0000;
-    margin: 20px 250px 10px 250px;
-    border-radius: 10px;
-    height: 500px;
 }
 
 #tabela {
@@ -100,7 +59,7 @@ tr,
 th,
 td {
     border-collapse: collapse;
-    border: 3px solid rgb(136, 58, 58);
+    border: 3px solid #770000;
 }
 
 #coluna-curtir {

@@ -1,5 +1,5 @@
 .body {
-    background-color: #ee0101;
+    background-color: #a10101;
     font-family: 'Ubuntu', sans-serif;
     color: #fff;
 }
@@ -55,7 +55,8 @@ p {
 
 #botao-empresa:hover {
     background-color: white;
-    color: #ee0101;
+    color: #a10101;
+    /* color: #ee0101;  */
 }
 
 #botao-candidato {
@@ -66,7 +67,7 @@ p {
 
 #botao-candidato:hover {
     background-color: white;
-    color: #ee0101;
+    color: #a10101;
 }
 
 #cadastro-empresa {
@@ -80,13 +81,15 @@ p {
 }
 
 #cadastro-empresa:hover {
-    color: #ee0101;
+    color: #a10101;
     background-color: #fff;
+    font-weight: bold;
 }
 
 #cadastro-candidato:hover {
-    color: #ee0101;
+    color: #a10101;
     background-color: #fff;
+    font-weight: bold;
 }
 
 #modal-cadastro-empresa {
