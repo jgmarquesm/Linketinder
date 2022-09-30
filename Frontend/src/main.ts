@@ -3,6 +3,7 @@ import { Empresa } from './empresa';
 import { Candidato } from './candidato';
 import iniciaMocks from './mocks';
 import extrairDados from './plotarGrafico';
+import validarDadosDoCandidato, { validarDadosEmpresa, validarSkill, validarVaga } from './validacoes';
 
 // Arrays
 export var vagas: Array<Vaga> = new Array(); 
@@ -57,6 +58,7 @@ if (botaoCandidatos){
 if (botaoCadEmpresas){
     botaoCadEmpresas.onclick = function() {
         $("#modal-cadastro-empresa").modal("show");
+        validarDadosEmpresa();
     }
 }
 
@@ -64,6 +66,7 @@ if (botaoCadEmpresas){
 if (botaoCadCandidatos){
     botaoCadCandidatos.onclick = function() {
         $("#modal-cadastro-candidato").modal("show");
+        validarDadosDoCandidato();
     }
 }
 
@@ -71,6 +74,7 @@ if (botaoCadCandidatos){
 if (botaoCadVaga){
     botaoCadVaga.onclick = function() {
         $("#modal-cadastro-vaga").modal("show");
+        validarVaga();
     }
 }
 
@@ -78,6 +82,7 @@ if (botaoCadVaga){
 if (botaoCadSkill){
     botaoCadSkill.onclick = function() {
         $("#modal-cadastro-hab").modal("show");
+        validarSkill();
     }
 }
 

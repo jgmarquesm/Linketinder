@@ -99,3 +99,61 @@ p {
 #modal-cadastro-candidato {
     color: #000;
 }
+
+#cad-emp:disabled {
+    background-color: #acacac;
+    cursor: not-allowed;
+}
+
+#cad-cand:disabled {
+    background-color: #acacac;
+    cursor: not-allowed;
+}
+
+#cad-vaga:disabled {
+    background-color: #acacac;
+    cursor: not-allowed;
+}
+
+#cad-skill:disabled {
+    background-color: #acacac;
+    cursor: not-allowed;
+}
+
+.form-group.success input {
+    border: 3px solid #4ECA64;
+}
+
+.form-group.error input {
+    border: 3px solid #DB5A5A;
+}
+
+.form-group.success i.img-success {
+    visibility: visible;
+}
+
+.form-group.error i.img-error {
+    visibility: visible;
+}
+
+.form-group.error small {
+    color: #DB5A5A;
+    right: 320px;
+    visibility: visible;
+}
+
+.form-group i {
+    position: absolute;
+    visibility: hidden;
+}
+
+.form-group small {
+    visibility: hidden;
+    position: absolute;
+    margin-top: 5px;
+    font-size: 14px;
+}
+
+textarea {
+    resize: none;
+}
