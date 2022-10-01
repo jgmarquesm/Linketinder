@@ -110,16 +110,6 @@ p {
     cursor: not-allowed;
 }
 
-#cad-vaga:disabled {
-    background-color: #acacac;
-    cursor: not-allowed;
-}
-
-#cad-skill:disabled {
-    background-color: #acacac;
-    cursor: not-allowed;
-}
-
 .form-group.success input {
     border: 3px solid #4ECA64;
 }

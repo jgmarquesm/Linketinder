@@ -66,6 +66,7 @@ if (botaoCadEmpresas){
 if (botaoCadCandidatos){
     botaoCadCandidatos.onclick = function() {
         $("#modal-cadastro-candidato").modal("show");
+        console.log("Cadastro de cand");
         validarDadosDoCandidato();
     }
 }
