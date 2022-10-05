@@ -20,7 +20,7 @@ CREATE TABLE candidatos (
   nivel_formacao VARCHAR(20) NOT NULL
 );
 
-CREATE TABLE ultima_xp (
+CREATE TABLE ultimaXp (
   id SERIAL PRIMARY KEY,
   id_candidato INT  REFERENCES candidatos(id) NOT NULL,
   empresa VARCHAR(30),
@@ -50,25 +50,25 @@ CREATE TABLE vagas (
   id_departamento INT REFERENCES departamentos(id) NOT NULL
 );
 
-CREATE TABLE habilidades_candidato (
+CREATE TABLE habilidadesCandidato (
   id SERIAL PRIMARY KEY,
   id_habilidade INT REFERENCES habilidades(id) NOT NULL,
   id_candidato INT REFERENCES candidatos(id) NOT NULL
 );
 
-CREATE TABLE habilidades_vaga (
+CREATE TABLE habilidadesVaga (
   id SERIAL PRIMARY KEY,
   id_habilidade INT REFERENCES habilidades(id) NOT NULL,
   id_vaga INT REFERENCES vagas(id) NOT NULL
 );
 
-CREATE TABLE vagas_curtidas (
+CREATE TABLE vagasCurtidas (
   id SERIAL PRIMARY KEY,
   id_vaga INT REFERENCES vagas(id) NOT NULL,
   id_candidato INT REFERENCES candidatos(id) NOT NULL
 );
 
-CREATE TABLE candidatos_curtidos (
+CREATE TABLE candidatosCurtidos (
   id SERIAL PRIMARY KEY,
   id_empresa INT REFERENCES empresas(id) NOT NULL,
   id_candidato INT REFERENCES candidatos(id) NOT NULL
