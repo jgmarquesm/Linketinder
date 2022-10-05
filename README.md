@@ -12,3 +12,8 @@ Pode encontrar essa implementação <a href="https://github.com/jgmarquesm/Linke
 Para rodar a aplicação e gerar a "versão de produção" usei Webpack.
 </p>
 <h6>Vídeo de demonstração Frontend: <a href="">clique aqui</a>.</h6>
+
+<p>
+A Modelagem inicial do banco de dados foi feita usando a ferramenta <a href="https://dbdiagram.io/home">dbdiagram</a> e pode ser vista <a href="https://github.com/jgmarquesm/Linketinder/tree/main/Backend/SQL/">aqui</a>.
+Logo em seguida o Modelo Físico do BD foi implementado usando o PostgreSQL através do pgAdmin4 (um client para Postgre).
+</p>
