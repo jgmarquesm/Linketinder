@@ -1,4 +1,6 @@
 package main
+
+
 /**
  *
  * @param args
@@ -6,11 +8,5 @@ package main
  */
 static void main(String[] args) {
 
-//  App.rodando()
-//  ControllerCandidato.create()
-  ControllerCandidato.read()
-  ControllerCandidato.update()
-  ControllerCandidato.read()
-  ControllerCandidato.delete()
-  ControllerCandidato.read()
+  App.rodando()
 }
