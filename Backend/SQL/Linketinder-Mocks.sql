@@ -10,13 +10,6 @@ INSERT INTO habilidades (habilidade) VALUES ('Skill8');
 INSERT INTO habilidades (habilidade) VALUES ('Skill9');
 INSERT INTO habilidades (habilidade) VALUES ('Skill10');
 
--- Departamentos
-INSERT INTO departamentos (departamento) VALUES ('TI');
-INSERT INTO departamentos (departamento) VALUES ('Contabilidade');
-INSERT INTO departamentos (departamento) VALUES ('Recursos Humanos');
-INSERT INTO departamentos (departamento) VALUES ('Vendas');
-INSERT INTO departamentos (departamento) VALUES ('Suporte');
-
 -- Candidatos
 INSERT INTO candidatos (nome, sobrenome, cpf, telefone, resumo, linkedin,
 portifolio, nivel_formacao)
@@ -43,19 +36,6 @@ portifolio, nivel_formacao)
 VALUES ('Candidato', '5', '55555555555', '55555555555', 'Sou isso e aquilo...',
 'linkedin.com/in/cand5', 'portifoliocand5.com', 'Técnico');
 
--- Ultima XP
-INSERT INTO ultimaXp (id_candidato, empresa, cargo, tempo, senioridade)
-VALUES (1, 'Empresa taltal1', 'QA', 28, 'Pleno');
-
-INSERT INTO ultimaXp (id_candidato, empresa, cargo, tempo, senioridade)
-VALUES (2, 'Empresa taltal2', 'dev full stack', 62, 'Senior');
-
-INSERT INTO ultimaXp (id_candidato, empresa, cargo, tempo, senioridade)
-VALUES (4, 'Empresa taltal4', 'dev back end', 34, 'Pleno');
-
-INSERT INTO ultimaXp (id_candidato, empresa, cargo, tempo, senioridade)
-VALUES (5, 'Empresa taltal5', 'dev front end', 4, 'Estagiário');
-
 -- Empresas
 INSERT INTO empresas (nome, cnpj, telefone, cep, resumo, ramo, quantidade_funcionario)
 VALUES ('Empresa Padrão', '11111111111111', '11111111111', '11111111', 'Somos a Empresa Padrão...', 'Tecnologia', 50);
@@ -73,17 +53,16 @@ INSERT INTO empresas (nome, cnpj, telefone, cep, resumo, ramo, quantidade_funcio
 VALUES ('Empresa 5', '55555555555555', '55555555555', '55555555', 'Somos a Empresa 5...', 'Fintech', 300);
 
 -- Vagas
-
-INSERT INTO vagas (nome, descricao, senioridade, cidade, id_empresa, id_departamento)
-VALUES ('Vaga 1', 'Descrição Vaga 1', 'Senior', 'Home Office', 1, 1);
-INSERT INTO vagas (nome, descricao, senioridade, cidade, id_empresa, id_departamento)
-VALUES ('Vaga 2', 'Descrição Vaga 2', 'Júnior', 'Goiânia', 2, 1);
-INSERT INTO vagas (nome, descricao, senioridade, cidade, id_empresa, id_departamento)
-VALUES ('Vaga 3', 'Descrição Vaga 3', 'Estagiário', 'São Paulo', 3, 1);
-INSERT INTO vagas (nome, descricao, senioridade, cidade, id_empresa, id_departamento)
-VALUES ('Vaga 4', 'Descrição Vaga 4', 'Pleno', 'Home Office', 4, 1);
-INSERT INTO vagas (nome, descricao, senioridade, cidade, id_empresa, id_departamento)
-VALUES ('Vaga 5', 'Descrição Vaga 5', 'Especialista', 'Home Office', 5, 1);
+INSERT INTO vagas (nome, descricao, senioridade, cidade, id_empresa)
+VALUES ('Vaga 1', 'Descrição Vaga 1', 'Senior', 'Home Office', 1);
+INSERT INTO vagas (nome, descricao, senioridade, cidade, id_empresa)
+VALUES ('Vaga 2', 'Descrição Vaga 2', 'Júnior', 'Goiânia', 2);
+INSERT INTO vagas (nome, descricao, senioridade, cidade, id_empresa)
+VALUES ('Vaga 3', 'Descrição Vaga 3', 'Estagiário', 'São Paulo', 3);
+INSERT INTO vagas (nome, descricao, senioridade, cidade, id_empresa)
+VALUES ('Vaga 4', 'Descrição Vaga 4', 'Pleno', 'Home Office', 4);
+INSERT INTO vagas (nome, descricao, senioridade, cidade, id_empresa)
+VALUES ('Vaga 5', 'Descrição Vaga 5', 'Especialista', 'Home Office', 5);
 
 -- Habilidade dos Candidatos
 

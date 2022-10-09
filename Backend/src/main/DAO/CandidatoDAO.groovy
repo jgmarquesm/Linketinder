@@ -57,7 +57,7 @@ class CandidatoDAO {
 
     static void update(String campo, String valor, int id) {
         Sql update = conectar()
-        update.executeUpdate "UPDATE candidatos SET $campo = $valor WHERE id = $id"
+        update.executeUpdate "UPDATE candidatos SET " +  """${campo}""" + " = " + """'${valor}'""" + " WHERE id = " + """${id}"""
         desconectar(update)
         String msg = JOptionPane.showMessageDialog(null, "Cadastro atualizado com sucesso.")
     }

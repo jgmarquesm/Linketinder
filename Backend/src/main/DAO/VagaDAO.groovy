@@ -27,7 +27,30 @@ class VagaDAO {
     static void readAll() {
         Sql read = conectar();
         ArrayList<String> lista_habilidades = new ArrayList<>()
-        read.query('SELECT v.id, v.nome, v.descricao, v.senioridade, v.cidade FROM vagas AS v') { resultSet ->
+        read.query("""SELECT v.id, v.nome, v.descricao, v.senioridade, v.cidade FROM vagas AS v""") { resultSet ->
+            while (resultSet.next()) {
+                def id = resultSet.getInt('id')
+                def nome = resultSet.getString('nome')
+                def descricao = resultSet.getString('descricao')
+                def senioridade = resultSet.getString('senioridade')
+                def cidade = resultSet.getString('cidade')
+
+                read.query("""SELECT h.habilidade FROM habilidadesvaga AS hv, habilidades as h WHERE hv.id_vaga = ${id} AND hv.id_habilidade = h.id"""){
+                    resultSet2 -> while(resultSet2.next()){
+                        lista_habilidades.add(resultSet2.getString('habilidade'))
+                    }
+                }
+                printf('Nome: %s, Descrição: %s, Senioridade: %s, Cidade: %s, Habilidades: %s%n------------------------%n', nome, descricao, senioridade, cidade, lista_habilidades.join(","))
+                lista_habilidades = []
+            }
+        }
+        desconectar(read)
+    }
+
+    static void readAllMine(int id_empresa) {
+        Sql read = conectar();
+        ArrayList<String> lista_habilidades = new ArrayList<>()
+        read.query("""SELECT v.id, v.nome, v.descricao, v.senioridade, v.cidade FROM vagas AS v WHERE v.id_empresa = $id_empresa""") { resultSet ->
             while (resultSet.next()) {
                 def id = resultSet.getInt('id')
                 def nome = resultSet.getString('nome')

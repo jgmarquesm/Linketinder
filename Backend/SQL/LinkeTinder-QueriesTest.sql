@@ -15,7 +15,7 @@ WHERE
 	c.id = cc.id_candidato AND e.id = cc.id_empresa AND e.id = v.id_empresa 
 	AND e.id = 1;
 	
--- Query: Quantidade decurtidas de cada vaga em ordem decrescente:
+-- Query: Quantidade de curtidas de cada vaga em ordem decrescente:
 SELECT
 	v.nome, COUNT(vc.id_candidato) AS QtdDeCurtidas
 FROM
@@ -27,14 +27,3 @@ GROUP BY
 ORDER BY
 	COUNT(vc.id_candidato)
 DESC;
-	
--- Query: Última experiência, se tiver, de cada candidato em ordem alfabética na senioridade.
-SELECT 
-	c.nome, c.sobrenome, uxp.empresa, uxp.cargo, uxp.tempo AS meses, 
-	uxp.senioridade
-FROM
-	candidatos AS c, ultimaXp AS uxp
-WHERE
-	c.id = uxp.id_candidato
-ORDER BY
-	uxp.senioridade;

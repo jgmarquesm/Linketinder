@@ -138,9 +138,9 @@ class Opcoes {
 ''')
 
         switch (vag.toLowerCase(Locale.ROOT)) {
-            case "1" -> VagaDAO.readAll()
-            case "3" -> Cadastro.novaVaga(id)
-            case "2" -> atualizarCadastroVagas()
+            case "1" -> VagaDAO.readAllMine(id)
+            case "2" -> Cadastro.novaVaga(id)
+            case "3" -> atualizarCadastroVagas()
             case "4" -> {
                 String id_vaga_str = JOptionPane.showInputDialog("ID da vaga:")
                 int id_vaga = id_vaga_str.toInteger()
