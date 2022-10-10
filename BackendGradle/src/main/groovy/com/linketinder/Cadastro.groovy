@@ -1,10 +1,6 @@
-package main
+package com.linketinder
 
-import main.DAO.CandidatoDAO
-import main.DAO.EmpresaDAO
-import main.DAO.HabilidadesDAO
-import main.DAO.VagaDAO
-
+import com.linketinder.DAO.*
 import javax.swing.JOptionPane
 
 class Cadastro {

@@ -1,6 +1,4 @@
-package main
-
-
+package com.linketinder
 /**
  *
  * @param args

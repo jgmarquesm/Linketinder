@@ -1,7 +1,7 @@
-package main.DAO
-import groovy.sql.Sql
-import main.Candidato
+package com.linketinder.DAO
 
+import groovy.sql.Sql
+import com.linketinder.Candidato
 import javax.swing.JOptionPane
 
 

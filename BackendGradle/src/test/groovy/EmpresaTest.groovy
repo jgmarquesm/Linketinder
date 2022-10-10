@@ -1,6 +1,6 @@
 package test
 
-import main.Empresa
+import com.linketinder.Empresa
 import spock.lang.Specification
 
 class EmpresaTest extends Specification {

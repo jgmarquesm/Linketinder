@@ -1,4 +1,4 @@
-package main
+package com.linketinder
 
 import javax.swing.JOptionPane
 

@@ -1,8 +1,6 @@
-package test
-
-import main.App
-import main.Candidato
-import main.Empresa
+import com.linketinder.App
+import com.linketinder.Candidato
+import com.linketinder.Empresa
 import spock.lang.Specification
 
 class AdicionarUserTest extends Specification {

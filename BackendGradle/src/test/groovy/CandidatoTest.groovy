@@ -1,6 +1,6 @@
 package test
 
-import main.Candidato
+import com.linketinder.Candidato
 import spock.lang.Specification
 
 class CandidatoTest extends Specification {
