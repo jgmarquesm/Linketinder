@@ -8,7 +8,7 @@ Os Testes no Backend foram feitos usando o <a href="https://spockframework.org/"
 
 <p>
 A Modelagem inicial do banco de dados foi feita usando a ferramenta <a href="https://dbdiagram.io/home">dbdiagram</a> e pode ser vista <a href="https://github.com/jgmarquesm/Linketinder/tree/main/BackendGradle/SQL/">aqui</a>.
-Logo em seguida o Modelo Físico do BD foi implementado usando o PostgreSQL através do pgAdmin4 (um client para Postgre).
+Logo em seguida o Modelo Físico do BD foi implementado usando o <a href="https://www.postgresql.org/">PostgreSQL</a> através do <a href="https://www.pgadmin.org/">pgAdmin4</a>.
 </p>
 
 <p>
