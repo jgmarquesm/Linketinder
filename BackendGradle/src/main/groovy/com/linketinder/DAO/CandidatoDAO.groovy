@@ -66,7 +66,25 @@ class CandidatoDAO {
         Sql delete = conectar()
         delete.execute "DELETE FROM habilidadescandidato AS hc WHERE hc.id_candidato = $id"
         delete.execute "DELETE FROM candidatos WHERE id = $id"
-        delete.close()
+        desconectar(delete)
         String msg = JOptionPane.showMessageDialog(null, "Candidato excluído com sucesso.")
+    }
+
+    static String verificaMatch(int id_candidato, id_vaga){
+        Sql verifica = conectar()
+        String matches
+        verifica.query("""SELECT v.nome AS Vaga, e.nome AS Empresa FROM vagas AS v, empresas AS e, candidatos AS
+ c WHERE v.id = $id_vaga AND WHERE c.id = $id_candidato AND c.id IN (SELECT id_candidato FROM candidatoscurtidos WHERE 
+id_empresa = e.id) AND e.id = v.id_empresa AND v.id IN SELECT id_vaga FROM vagascurtidas WHERE id_candidato = c.id) 
+ORDER BY c.id"""){
+            matches = "| Nome Candidato | Vaga | Empresa |"
+            while (it.next()){
+                String nomeVaga = it.getString('Vaga')
+                String nomeEmpresa = it.getString('Empresa')
+                matches += "| $nomeVaga | $nomeEmpresa |"
+            }
+        }
+        desconectar(verifica)
+        matches
     }
 }
