@@ -1,12 +1,13 @@
 package com.linketinder.DAO
 
+import com.linketinder.interfaces.SkillsDAO
 import groovy.sql.Sql
-import com.linketinder.Candidato
-import com.linketinder.Vaga
+import com.linketinder.usuarios.Candidato
+import com.linketinder.utils.Vaga
 
 import javax.swing.JOptionPane
 
-class HabilidadesDAO {
+class HabilidadesDAO implements SkillsDAO{
 
     static def url = 'jdbc:postgresql://localhost:5432/Linketinder'
     static def user = 'jgmarquesm'
@@ -15,6 +16,28 @@ class HabilidadesDAO {
 
     private static Sql conectar() { Sql sql = Sql.newInstance url, user, password, driver }
     private static void desconectar(connection) { connection.close() }
+
+    @Override
+    void createHabilidade(String competencia, int choice, def T){
+        switch (choice){
+            case 1 -> {
+                try {
+                    createHabilidadeCandidato(competencia, (T as Candidato))
+                } catch (ClassCastException e){
+                    e.cause
+                    e.printStackTrace()
+                }
+            }
+            case 2 -> {
+                try {
+                    createHabilidadeVaga(competencia, (T as Vaga))
+                } catch (ClassCastException e){
+                    e.cause
+                    e.printStackTrace()
+                }
+            }
+        }
+    }
 
     static void createHabilidadeCandidato(String habilidade, Candidato c) {
         Sql create = conectar()
@@ -47,7 +70,7 @@ class HabilidadesDAO {
         desconectar(create)
     }
 
-    static void createHabilidadeVaga(String habilidade, Vaga v) {
+   static void createHabilidadeVaga(String habilidade, Vaga v) {
         Sql create = conectar()
         String nome = v.getNome()
         int id_empresa = v.id_empresa
@@ -79,7 +102,8 @@ class HabilidadesDAO {
         desconectar(create)
     }
 
-    static void listarHabilidadesCandidato(int id) {
+    @Override
+    void habilidadesCandidato(int id) {
 
         Sql readSkills = conectar()
         readSkills.query("SELECT h.habilidade FROM habilidades AS h, habilidadescandidato AS hc WHERE hc.id_habilidade = h.id AND hc.id_candidato = $id"){
