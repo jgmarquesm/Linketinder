@@ -27,7 +27,7 @@ Formação: $formacao
            """
     }
 
-    static void criar(CandidatoDAO candidatoDAO) {candidatoDAO.create(this)}
+    void criar(CandidatoDAO candidatoDAO) {candidatoDAO.create(this)}
 
     static void listar(CandidatoDAO candidatoDAO) {candidatoDAO.read(1)}
 

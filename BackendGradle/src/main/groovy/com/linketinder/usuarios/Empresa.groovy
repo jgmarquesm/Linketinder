@@ -25,9 +25,7 @@ Quantidade de funcionário: $qtdFunc
                """
     }
 
-    static void criar(EmpresaDAO empresaDAO) {
-        empresaDAO.create(this)
-    }
+    void criar(EmpresaDAO empresaDAO) {empresaDAO.create(this)}
 
     static void listarMinhasVagas(VagaDAO vagaDAO, int id) {
         vagaDAO.read(2, id)

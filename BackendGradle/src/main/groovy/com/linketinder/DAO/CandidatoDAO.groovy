@@ -1,5 +1,6 @@
 package com.linketinder.DAO
 
+import com.linketinder.usuarios.Candidato
 import groovy.sql.Sql
 import javax.swing.JOptionPane
 import java.sql.SQLException
@@ -15,10 +16,10 @@ class CandidatoDAO {
     private static Sql conectar() {Sql sql = Sql.newInstance url, user, password, driver}
     private static void desconectar(connection) {connection.close()}
 
-    static void create(def t) {
+    static void create(Candidato c) {
         try {
             Sql create = conectar()
-            List<String> params = [t.nome, t.sobrenome, t.cpf, t.telefone, t.resumo, t.linkedin, t.portifolio, t.formacao]
+            List<String> params = [c.nome, c.sobrenome, c.cpf, c.telefone, c.resumo, c.linkedin, c.portifolio, c.formacao]
             create.executeInsert('INSERT INTO candidatos (nome, sobrenome,  cpf, telefone, resumo, linkedin, portifolio, nivel_formacao) VALUES (?, ?, ?, ?, ?, ?, ?, ?)', params)
             desconectar(create)
         } catch(SQLException e) {
@@ -62,7 +63,7 @@ class CandidatoDAO {
 
     static void readAll() {
         try {
-            Sql read = conectar();
+            Sql read = conectar()
             ArrayList<String> lista_habilidades = new ArrayList<>()
             read.query('SELECT c.id, c.nivel_formacao FROM candidatos AS c ORDER BY c.id') { resultSet ->
                 while (resultSet.next()) {

@@ -1,7 +1,7 @@
 package com.linketinder.DAO
 
+import com.linketinder.usuarios.Empresa
 import groovy.sql.Sql
-import org.postgresql.util.PSQLException
 
 import javax.swing.JOptionPane
 import java.sql.SQLException
@@ -18,16 +18,16 @@ class EmpresaDAO {
 
     private static void desconectar(connection) { connection.close() }
 
-    static void create(def t) {
+    static void create(Empresa e) {
         try {
             Sql create = conectar()
-            List<String> params = [t.nome, t.cnpj, t.telefone, t.cep, t.resumo, t.ramo, (t.qtdFunc as Integer)]
+            List<?> params = [e.nome, e.cnpj, e.telefone, e.cep, e.resumo, e.ramo, (e.qtdFunc as int) ]
             create.executeInsert('INSERT INTO empresas (nome, cnpj, telefone, cep, resumo, ramo, quantidade_funcionario) VALUES (?, ?, ?, ?, ?, ?, ?)', params)
                 desconectar(create)
-        } catch(SQLException e) {
-            e.cause
-            e.printStackTrace()
-            throw e
+        } catch(SQLException eSQL) {
+            eSQL.cause
+            eSQL.printStackTrace()
+            throw eSQL
         }
 
     }

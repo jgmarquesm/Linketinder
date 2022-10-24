@@ -10,11 +10,7 @@ class Vaga {
     String cidade
     int id_empresa
 
-    static void criar(VagaDAO vagaDAO){
-        vagaDAO.create(this)
-    }
+    void criar(VagaDAO vagaDAO){ vagaDAO.create(this)}
 
-    static void listar(VagaDAO vagaDAO){
-        vagaDAO.read(1)
-    }
+    static void listar(VagaDAO vagaDAO){vagaDAO.read(1)}
 }

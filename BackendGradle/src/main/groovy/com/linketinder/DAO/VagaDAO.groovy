@@ -1,5 +1,6 @@
 package com.linketinder.DAO
 
+import com.linketinder.utils.Vaga
 import groovy.sql.Sql
 
 import javax.swing.JOptionPane
@@ -16,16 +17,16 @@ class VagaDAO{
 
     private static void desconectar(connection) { connection.close() }
 
-    static void create(def t) {
+    static void create(Vaga v) {
         try {
             Sql create = conectar()
-            ArrayList params = [t.nome, t.descricao, t.senioridade, t.cidade, t.id_empresa]
+            ArrayList params = [v.nome, v.descricao, v.senioridade, v.cidade, v.id_empresa]
             create.executeInsert('INSERT INTO vagas (nome, descricao, senioridade, cidade, id_empresa) VALUES (?, ?, ?, ?, ?)', params)
             println "Vaga inserida com sucesso!"
             desconectar(create)
         } catch(SQLException e) {
             e.cause
-            e.printStackTrace()
+            e.printStackTrace()1
             throw e
         }
     }
@@ -46,7 +47,7 @@ class VagaDAO{
 
     static void readAll() {
         try {
-            Sql read = conectar();
+            Sql read = conectar()
             ArrayList<String> lista_habilidades = new ArrayList<>()
             read.query("""SELECT v.id, v.nome, v.descricao, v.senioridade, v.cidade FROM vagas AS v""") { resultSet ->
                 while (resultSet.next()) {
@@ -75,7 +76,7 @@ class VagaDAO{
 
     static void readAllMine(int ID) {
         try {
-            Sql read = conectar();
+            Sql read = conectar()
             ArrayList<String> lista_habilidades = new ArrayList<>()
             read.query("""SELECT v.id, v.nome, v.descricao, v.senioridade, v.cidade FROM vagas AS v WHERE v.id_empresa = $ID""") { resultSet ->
                 while (resultSet.next()) {
