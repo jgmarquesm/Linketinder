@@ -1,11 +1,10 @@
 package com.linketinder.DAO
 
-import com.linketinder.interfaces.DAO
 import groovy.sql.Sql
 import javax.swing.JOptionPane
 
 
-class CandidatoDAO implements DAO{
+class CandidatoDAO {
 
     static def url = 'jdbc:postgresql://localhost:5432/Linketinder'
     static def user = 'jgmarquesm'
@@ -16,16 +15,14 @@ class CandidatoDAO implements DAO{
 
     private static void desconectar(connection) { connection.close() }
 
-    @Override
-    void create(def t) {
+    static void create(def t) {
         Sql create = conectar()
         List<String> params = [t.nome, t.sobrenome, t.cpf, t.telefone, t.resumo, t.linkedin, t.portifolio, t.formacao]
         create.executeInsert('INSERT INTO candidatos (nome, sobrenome,  cpf, telefone, resumo, linkedin, portifolio, nivel_formacao) VALUES (?, ?, ?, ?, ?, ?, ?, ?)', params)
         desconectar(create)
     }
 
-    @Override
-    void read(def ... args) {
+    static def read(def ... args) {
         switch (args[0]){
             case 1 -> readAll()
             case 2 -> {
@@ -53,7 +50,9 @@ class CandidatoDAO implements DAO{
 
     static void readAll() {
         Sql read = conectar();
+
         ArrayList<String> lista_habilidades = new ArrayList<>()
+
         read.query('SELECT c.id, c.nivel_formacao FROM candidatos AS c ORDER BY c.id') { resultSet ->
             while (resultSet.next()) {
                 def id = resultSet.getString('id')
@@ -71,16 +70,14 @@ class CandidatoDAO implements DAO{
         desconectar(read)
     }
 
-    @Override
-    void update(String campo, String valor, int id) {
+    static void update(String campo, String valor, int id) {
         Sql update = conectar()
         update.executeUpdate "UPDATE candidatos SET " +  """${campo}""" + " = " + """'${valor}'""" + " WHERE id = " + """${id}"""
         desconectar(update)
         String msg = JOptionPane.showMessageDialog(null, "Cadastro atualizado com sucesso.")
     }
 
-    @Override
-    void delete(int id) {
+    static void delete(int id) {
         Sql delete = conectar()
         delete.execute "DELETE FROM habilidadescandidato AS hc WHERE hc.id_candidato = $id"
         delete.execute "DELETE FROM candidatos WHERE id = $id"

@@ -1,12 +1,11 @@
 package com.linketinder.DAO
 
-import com.linketinder.interfaces.DAO
 import groovy.sql.Sql
 
 import javax.swing.JOptionPane
 
 
-class EmpresaDAO implements DAO{
+class EmpresaDAO {
 
     static def url = 'jdbc:postgresql://localhost:5432/Linketinder'
     static def user = 'jgmarquesm'
@@ -17,16 +16,15 @@ class EmpresaDAO implements DAO{
 
     private static void desconectar(connection) { connection.close() }
 
-    @Override
-    void create(def t) {
+    static void create(def t) {
         Sql create = conectar()
         List<String> params = [t.nome, t.cnpj, t.telefone, t.cep, t.resumo, t.ramo, (t.qtdFunc as Integer)]
         create.executeInsert('INSERT INTO empresas (nome, cnpj, telefone, cep, resumo, ramo, quantidade_funcionario) VALUES (?, ?, ?, ?, ?, ?, ?)', params)
         desconectar(create)
+        []
     }
 
-    @Override
-    void read(def ... args) {
+    static def read(def ... args) {
         readCNPJ((args[0] as String))
     }
 
@@ -42,20 +40,19 @@ class EmpresaDAO implements DAO{
         id
     }
 
-    @Override
-    void update(String campo, String valor, int id) {
+    static void update(String campo, String valor, int id) {
         Sql update = conectar()
         update.executeUpdate "UPDATE empresas SET "  +  """${campo}""" + " = " + """'${valor}'""" + " WHERE id = " + """${id}"""
         desconectar(update)
         String msg = JOptionPane.showMessageDialog(null, "Cadastro atualizado com sucesso.")
     }
 
-    @Override
-    void delete(int id) {
+    static void delete(int id) {
         Sql delete = conectar()
         delete.execute "DELETE FROM empresas WHERE id = $id"
         desconectar(delete)
         String msg = JOptionPane.showMessageDialog(null, "Cadastro excluído com sucesso.")
+        []
     }
 
     static String verificaMatch(int id_candidato, id_empresa){

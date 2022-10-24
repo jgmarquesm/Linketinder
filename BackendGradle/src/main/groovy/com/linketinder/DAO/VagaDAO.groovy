@@ -1,11 +1,10 @@
 package com.linketinder.DAO
 
-import com.linketinder.interfaces.DAO
 import groovy.sql.Sql
 
 import javax.swing.JOptionPane
 
-class VagaDAO implements DAO{
+class VagaDAO{
 
     static def url = 'jdbc:postgresql://localhost:5432/Linketinder'
     static def user = 'jgmarquesm'
@@ -16,17 +15,16 @@ class VagaDAO implements DAO{
 
     private static void desconectar(connection) { connection.close() }
 
-    @Override
-    void create(def t) {
+    static void create(def t) {
         Sql create = conectar()
         def params = [t.nome, t.descricao, t.senioridade, t.cidade, t.id_empresa]
         create.executeInsert('INSERT INTO vagas (nome, descricao, senioridade, cidade, id_empresa) VALUES (?, ?, ?, ?, ?)', params)
         println "Vaga inserida com sucesso!"
         desconectar(create)
+        []
     }
 
-    @Override
-    void read(def ... args) {
+    static def read(def ... args) {
         switch (args[0]){
             case 1 -> readAll()
             case 2 -> {
@@ -86,8 +84,7 @@ class VagaDAO implements DAO{
         desconectar(read)
     }
 
-    @Override
-    void update(String campo, String valor, int id) {
+    static void update(String campo, String valor, int id) {
         Sql update = conectar()
         update.executeUpdate "UPDATE vagas SET $campo = $valor WHERE id= $id"
         desconectar(update)
@@ -95,13 +92,11 @@ class VagaDAO implements DAO{
 
     }
 
-    @Override
-    void delete(int id) {
+    static void delete(int id) {
         Sql delete = conectar()
         delete.execute "DELETE FROM habilidadesvaga AS hc WHERE hc.id_vaga = $id"
         delete.execute "DELETE FROM vagas WHERE id = $id"
         delete.close()
         String msg = JOptionPane.showMessageDialog(null, "Vaga excluída com sucesso!")
-
     }
 }

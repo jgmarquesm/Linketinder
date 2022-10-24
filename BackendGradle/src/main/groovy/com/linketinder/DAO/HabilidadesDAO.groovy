@@ -1,13 +1,12 @@
 package com.linketinder.DAO
 
-import com.linketinder.interfaces.SkillsDAO
 import groovy.sql.Sql
 import com.linketinder.usuarios.Candidato
 import com.linketinder.utils.Vaga
 
 import javax.swing.JOptionPane
 
-class HabilidadesDAO implements SkillsDAO{
+class HabilidadesDAO {
 
     static def url = 'jdbc:postgresql://localhost:5432/Linketinder'
     static def user = 'jgmarquesm'
@@ -17,8 +16,7 @@ class HabilidadesDAO implements SkillsDAO{
     private static Sql conectar() { Sql sql = Sql.newInstance url, user, password, driver }
     private static void desconectar(connection) { connection.close() }
 
-    @Override
-    void createHabilidade(String competencia, int choice, def T){
+    static void create(String competencia, int choice, def T){
         switch (choice){
             case 1 -> {
                 try {
@@ -102,9 +100,7 @@ class HabilidadesDAO implements SkillsDAO{
         desconectar(create)
     }
 
-    @Override
-    void habilidadesCandidato(int id) {
-
+    static void habilidadesCandidato(int id) {
         Sql readSkills = conectar()
         readSkills.query("SELECT h.habilidade FROM habilidades AS h, habilidadescandidato AS hc WHERE hc.id_habilidade = h.id AND hc.id_candidato = $id"){
             while(it.next()){
