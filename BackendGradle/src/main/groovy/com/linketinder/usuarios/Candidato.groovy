@@ -27,20 +27,9 @@ Formação: $formacao
            """
     }
 
-    static void criar(CandidatoDAO candidatoDAO) {
-        try {
-            candidatoDAO.create(this)
-        } catch (ClassCastException e) {
-            e.cause
-            e.printStackTrace()
-        }
-    }
+    static void criar(CandidatoDAO candidatoDAO) {candidatoDAO.create(this)}
 
-    static void listar(CandidatoDAO candidatoDAO) {
-        candidatoDAO.read(1)
-    }
+    static void listar(CandidatoDAO candidatoDAO) {candidatoDAO.read(1)}
 
-    static void listarHabilidades(HabilidadesDAO habilidadesDAO, int id) {
-        habilidadesDAO.habilidadesCandidato(id)
-    }
+    static void listarHabilidades(HabilidadesDAO habilidadesDAO, int id) {habilidadesDAO.habilidadesCandidato(id)}
 }

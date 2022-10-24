@@ -24,7 +24,6 @@ class Opcoes {
 3 - Atualizar cadastro.
 4 - Apagar conta.
 5 - Voltar.""")
-
         switch (emp.toLowerCase(Locale.ROOT)) {
             case "1" -> Vaga.listar(new VagaDAO())
             case "2" -> Candidato.listarHabilidades(new HabilidadesDAO(), ID)
@@ -66,7 +65,6 @@ class Opcoes {
 3 - Gerenciar vagas.
 4 - Apagar conta.
 5 - Voltar.""")
-
         switch (emp.toLowerCase(Locale.ROOT)) {
             case "1" -> Candidato.listar(new CandidatoDAO())
             case "2" -> atualizarCadastroEmpresa(ID)
@@ -108,7 +106,6 @@ class Opcoes {
 4 - Apagar Vaga.
 5 - Voltar.
 ''')
-
         switch (vag.toLowerCase(Locale.ROOT)) {
             case "1" -> Empresa.listarMinhasVagas(new VagaDAO(), ID)
             case "2" -> {
@@ -156,10 +153,22 @@ class Opcoes {
     }
 
     static void atualizar(Class<?> classeDAO, String campo, String valor, int id){
-        classeDAO.update(campo, valor, id)
+        try {
+            classeDAO.update(campo, valor, id)
+        } catch (ClassCastException e) {
+            e.cause
+            e.printStackTrace()
+            throw e
+        }
     }
 
     static void apagar(Class<?> classeDAO, int id) {
-        classeDAO.delete(id)
+        try {
+            classeDAO.delete(id)
+        } catch (ClassCastException e) {
+            e.cause
+            e.printStackTrace()
+            throw e
+        }
     }
 }

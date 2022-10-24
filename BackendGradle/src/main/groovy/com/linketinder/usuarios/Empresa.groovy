@@ -26,12 +26,7 @@ Quantidade de funcionário: $qtdFunc
     }
 
     static void criar(EmpresaDAO empresaDAO) {
-        try {
-            empresaDAO.create(this)
-        } catch (ClassCastException e) {
-            e.cause
-            e.printStackTrace()
-        }
+        empresaDAO.create(this)
     }
 
     static void listarMinhasVagas(VagaDAO vagaDAO, int id) {

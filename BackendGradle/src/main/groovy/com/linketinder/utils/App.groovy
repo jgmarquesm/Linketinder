@@ -5,9 +5,7 @@ import com.linketinder.usuarios.Empresa
 import javax.swing.JOptionPane
 
 class App {
-
     static void rodando(){
-
         String inicio = JOptionPane.showInputDialog("""Você é...
 1 - Um(a) Candidato(a).
 2 - Um Empresa.
@@ -15,7 +13,6 @@ class App {
 4 - Quero me cadastrar como empresa.
 5 - Sair
 """)
-
         switch (inicio.toLowerCase(Locale.ROOT)){
             case "1" -> Opcoes.authCandidato()
             case "2" -> Opcoes.authEmpresa()
@@ -28,10 +25,8 @@ class App {
                 String linkedin = JOptionPane.showInputDialog("Linkedin:")
                 String portifolio = JOptionPane.showInputDialog("Portifolio:")
                 String formacao = JOptionPane.showInputDialog("Formação:")
-
                 Candidato candidato = new Candidato(nome: nome, sobrenome: sobrenome, cpf: cpf,
                         telefone: telefone, resumo: resumo, linkedin: linkedin, portifolio: portifolio, formacao: formacao)
-
                 Cadastro.novoCandidato(candidato)
             }
             case "4" -> {
@@ -42,10 +37,8 @@ class App {
                 String resumo = JOptionPane.showInputDialog("Resumo:")
                 String ramo = JOptionPane.showInputDialog("Ramo de Atuação:")
                 String qtdFunc = JOptionPane.showInputDialog("Quantidade de funcionários:")
-
                 Empresa empresa = new Empresa(nome: nome, cnpj: cnpj, telefone: telefone, cep: cep, resumo: resumo,
                         ramo: ramo, qtdFunc: qtdFunc)
-
                 Cadastro.novaEmpresa(empresa)
             }
             case "5" -> {System.exit(0)}
