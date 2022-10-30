@@ -3,13 +3,13 @@ package com.linketinder.usuarios
 import spock.lang.Specification
 
 class CandidatoTest extends Specification {
-    def "test toString"() {
+    def "verificando toString"() {
         given:
-            Candidato candidatoMock = new Candidato(nome: "Candidato", sobrenome: "Teste", cpf: "00000000000",
+            Candidato candidato = new Candidato(nome: "Candidato", sobrenome: "Teste", cpf: "00000000000",
                     telefone: "00000000000", resumo: "blablabla", linkedin: "Linkedin Teste", portifolio: "Portifolio Teste",
                     formacao: "Formação Teste")
         when:
-            String candidatoToString = candidatoMock.toString()
+            String candidatoToString = candidato.toString()
         String resultadoEsperado = """
 Nome: Candidato
 Sobrenome: Teste
@@ -22,5 +22,29 @@ Formação: Formação Teste
            """
         then:
         candidatoToString == resultadoEsperado
+    }
+
+    def "verificando parametros passados para serem usados colunas"() {
+        given:
+            Candidato candidato = new Candidato(nome: "Candidato", sobrenome: "Teste", cpf: "00000000000",
+                    telefone: "00000000000", resumo: "blablabla", linkedin: "Linkedin Teste", portifolio: "Portifolio Teste",
+                    formacao: "Formação Teste")
+        when:
+            List<String> colunas = candidato.getColunas()
+            List<String> resultadoEsperado = ["Candidato", "Teste", "00000000000", "00000000000", "blablabla", "Linkedin Teste", "Portifolio Teste", "Formação Teste"]
+        then:
+            colunas == resultadoEsperado
+    }
+
+    def "Verificando o Statement responsável por criar um candidato no banco de dados"(){
+        given:
+            Candidato candidato = new Candidato(nome: "Candidato", sobrenome: "Teste", cpf: "00000000000",
+                    telefone: "00000000000", resumo: "blablabla", linkedin: "Linkedin Teste", portifolio: "Portifolio Teste",
+                    formacao: "Formação Teste")
+        when:
+            String statement = candidato.getSqlCreateStatement()
+            String resultadoEsperado = 'INSERT INTO candidatos (nome, sobrenome,  cpf, telefone, resumo, linkedin, portifolio, nivel_formacao) VALUES (?, ?, ?, ?, ?, ?, ?, ?)'
+        then:
+            statement == resultadoEsperado
     }
 }

@@ -1,37 +1,39 @@
 package com.linketinder.utils
 
 import com.linketinder.DAO.*
-import com.linketinder.usuarios.Candidato
-import com.linketinder.usuarios.Empresa
+import com.linketinder.usuarios.*
+
 import javax.swing.JOptionPane
 
 class Opcoes {
 
     static void authCandidato(){
         String cpf = JOptionPane.showInputDialog("Digite seu CPF: (apenas números)")
-        opcoesCandidato(CandidatoDAO.readCPF(cpf))
+        opcoesCandidato(CandidatoDAO.read("candidatos", "cpf", cpf))
     }
 
     static void authEmpresa(){
         String cnpj = JOptionPane.showInputDialog("Digite seu CNPJ: (apenas números)")
-        opcoesEmpresa(EmpresaDAO.readCNPJ(cnpj))
+        opcoesEmpresa(EmpresaDAO.read("empresas", "cnpj", cnpj))
     }
 
     static void opcoesCandidato(int ID){
         String emp = JOptionPane.showInputDialog("""Você deseja:
-1 - Listar vagas cadastradas.
-2 - Listar minhas habilidades.
-3 - Atualizar cadastro.
-4 - Apagar conta.
-5 - Voltar.""")
+1 - Listar vagas cadastradas
+2 - Listar minhas habilidades
+3 - Atualizar cadastro
+4 - Apagar conta
+5 - Voltar
+6 - Sair""")
         switch (emp.toLowerCase(Locale.ROOT)) {
-            case "1" -> Vaga.listar(new VagaDAO())
-            case "2" -> Candidato.listarHabilidades(new HabilidadesDAO(), ID)
+            case "1" -> Vaga.listar()
+            case "2" -> Candidato.listarHabilidades(ID)
             case "3" -> atualizarCadastroCandidato(ID)
-            case "4" -> apagar(CandidatoDAO, ID)
+            case "4" -> apagar(new CandidatoDAO(), "candidatos", ID)
             case "5" -> App.rodando()
+            case "6" -> System.exit(0)
         }
-        App.rodando()
+        opcoesCandidato(ID)
     }
 
     static void atualizarCadastroCandidato(int ID){
@@ -44,35 +46,42 @@ class Opcoes {
 6 - Linkedin
 7 - Portifolio
 8 - Formação
+9 - Voltar
+10 - Sair
 ''')
         String valor = JOptionPane.showInputDialog("Novo valor: ")
         switch (campo.toLowerCase(Locale.ROOT)) {
-            case "1" -> atualizar(CandidatoDAO,"nome", valor, ID)
-            case "2" -> atualizar(CandidatoDAO,"sobrenome", valor, ID)
-            case "3" -> atualizar(CandidatoDAO,"cpf", valor, ID)
-            case "4" -> atualizar(CandidatoDAO,"telefone", valor, ID)
-            case "5" -> atualizar(CandidatoDAO,"resumo", valor, ID)
-            case "6" -> atualizar(CandidatoDAO,"linkedin", valor, ID)
-            case "7" -> atualizar(CandidatoDAO,"portifolio", valor, ID)
-            case "8" -> atualizar(CandidatoDAO,"formacao", valor, ID)
+            case "1" -> atualizar(new CandidatoDAO(),"candidatos","nome", valor, ID)
+            case "2" -> atualizar(new CandidatoDAO(),"candidatos","sobrenome", valor, ID)
+            case "3" -> atualizar(new CandidatoDAO(),"candidatos","cpf", valor, ID)
+            case "4" -> atualizar(new CandidatoDAO(),"candidatos","telefone", valor, ID)
+            case "5" -> atualizar(new CandidatoDAO(),"candidatos","resumo", valor, ID)
+            case "6" -> atualizar(new CandidatoDAO(),"candidatos","linkedin", valor, ID)
+            case "7" -> atualizar(new CandidatoDAO(),"candidatos","portifolio", valor, ID)
+            case "8" -> atualizar(new CandidatoDAO(),"candidatos","formacao", valor, ID)
+            case "9" -> opcoesCandidato(ID)
+            case "10" -> {System.exit(0)}
         }
+        atualizarCadastroCandidato(ID)
     }
 
     static void opcoesEmpresa(int ID){
         String emp = JOptionPane.showInputDialog("""Você deseja:
-1 - Listar Candidatos cadastrados.
-2 - Atualizar cadastro.
-3 - Gerenciar vagas.
-4 - Apagar conta.
-5 - Voltar.""")
+1 - Listar Candidatos cadastrados
+2 - Atualizar cadastro
+3 - Gerenciar vagas
+4 - Apagar conta
+5 - Voltar
+6 - Sair""")
         switch (emp.toLowerCase(Locale.ROOT)) {
-            case "1" -> Candidato.listar(new CandidatoDAO())
+            case "1" -> Candidato.listar()
             case "2" -> atualizarCadastroEmpresa(ID)
             case "3" -> gerenciarVagas(ID)
-            case "4" -> apagar(EmpresaDAO, ID)
+            case "4" -> apagar(new EmpresaDAO(), "empresas", ID)
             case "5" -> App.rodando()
+            case "6" -> {System.exit(0)}
         }
-        App.rodando()
+        opcoesEmpresa(ID)
     }
 
     static void atualizarCadastroEmpresa(int ID){
@@ -84,30 +93,35 @@ class Opcoes {
 5 - Resumo
 6 - Ramo de Atuação
 7 - Quantidade de funcionários
+8 - Voltar
+9 - Sair
 ''')
         String valor = JOptionPane.showInputDialog("Novo valor: ")
         switch (campo.toLowerCase(Locale.ROOT)) {
-            case "1" -> atualizar(EmpresaDAO,"nome", valor, ID)
-            case "2" -> atualizar(EmpresaDAO,"cnpj", valor, ID)
-            case "3" -> atualizar(EmpresaDAO,"telefone", valor, ID)
-            case "4" -> atualizar(EmpresaDAO,"cep", valor, ID)
-            case "5" -> atualizar(EmpresaDAO,"resumo", valor, ID)
-            case "6" -> atualizar(EmpresaDAO,"ramo", valor, ID)
-            case "7" -> atualizar(EmpresaDAO,"quantidade_funcionario", valor, ID)
+            case "1" -> atualizar(new EmpresaDAO(),"empresas", "nome", valor, ID)
+            case "2" -> atualizar(new EmpresaDAO(),"empresas","cnpj", valor, ID)
+            case "3" -> atualizar(new EmpresaDAO(),"empresas","telefone", valor, ID)
+            case "4" -> atualizar(new EmpresaDAO(),"empresas","cep", valor, ID)
+            case "5" -> atualizar(new EmpresaDAO(),"empresas","resumo", valor, ID)
+            case "6" -> atualizar(new EmpresaDAO(),"empresas","ramo", valor, ID)
+            case "7" -> atualizar(new EmpresaDAO(),"empresas","quantidade_funcionario", valor, ID)
+            case "8" -> opcoesEmpresa(ID)
+            case "9" -> {System.exit(0)}
         }
-        App.rodando()
+        atualizarCadastroEmpresa(ID)
     }
 
     static void gerenciarVagas(int ID) {
         String vag = JOptionPane.showInputDialog('''Gerenciar Vagas:
-1 - Listar Vagas Cadastradas.
-2 - Cadastrar Vaga.
-3 - Atualizar Vaga.
-4 - Apagar Vaga.
-5 - Voltar.
+1 - Listar Vagas Cadastradas
+2 - Cadastrar Vaga
+3 - Atualizar Vaga
+4 - Apagar Vaga
+5 - Voltar
+6 - Sair
 ''')
         switch (vag.toLowerCase(Locale.ROOT)) {
-            case "1" -> Empresa.listarMinhasVagas(new VagaDAO(), ID)
+            case "1" -> Empresa.listarMinhasVagas(ID)
             case "2" -> {
                 String nome = JOptionPane.showInputDialog("Nome:")
                 String descricao = JOptionPane.showInputDialog("Descrição:")
@@ -126,49 +140,37 @@ class Opcoes {
             case "4" -> {
                 String id_vaga = JOptionPane.showInputDialog("ID da vaga:")
                 int idVaga = id_vaga.toInteger()
-                apagar(VagaDAO, idVaga)
+                apagar(new VagaDAO(), "vagas", idVaga)
             }
-            case "5" -> App.rodando()
+            case "5" -> opcoesEmpresa(ID)
+            case "6" -> {System.exit(0)}
         }
-        App.rodando()
     }
 
     static void atualizarCadastroVagas(int ID) {
         String campo = JOptionPane.showInputDialog('''Qual campo deseja atualizar?
-1 - Nome.
-2 - Descrição.
-3 - Senioridade.
-4 - Cidade.
-5 - Voltar.
+1 - Nome
+2 - Descrição
+3 - Senioridade
+4 - Cidade
+5 - Voltar
+6 - Sair
 ''')
         String valor = JOptionPane.showInputDialog("Novo valor: ")
         switch (campo.toLowerCase(Locale.ROOT)) {
-            case "1" -> atualizar(VagaDAO,"nome", valor, ID)
-            case "2" -> atualizar(VagaDAO,"descricao", valor, ID)
-            case "3" -> atualizar(VagaDAO,"senioridade", valor, ID)
-            case "4" -> atualizar(VagaDAO,"cidade", valor, ID)
-            case "5" -> App.rodando()
+            case "1" -> atualizar(new VagaDAO(), "vagas", "nome", valor, ID)
+            case "2" -> atualizar(new VagaDAO(), "vagas","descricao", valor, ID)
+            case "3" -> atualizar(new VagaDAO(), "vagas","senioridade", valor, ID)
+            case "4" -> atualizar(new VagaDAO(), "vagas","cidade", valor, ID)
+            case "5" -> gerenciarVagas(ID)
+            case "6" -> {System.exit(0)}
         }
-        App.rodando()
+        atualizarCadastroVagas(ID)
     }
 
-    static void atualizar(Class<?> classeDAO, String campo, String valor, int id){
-        try {
-            classeDAO.update(campo, valor, id)
-        } catch (ClassCastException e) {
-            e.cause
-            e.printStackTrace()
-            throw e
-        }
+    static void atualizar(ClassDAO classeDAO, String tabela, String campo, String valor, int id){
+        classeDAO.update(tabela, campo, valor, id)
     }
 
-    static void apagar(Class<?> classeDAO, int id) {
-        try {
-            classeDAO.delete(id)
-        } catch (ClassCastException e) {
-            e.cause
-            e.printStackTrace()
-            throw e
-        }
-    }
+    static void apagar(ClassDAO classeDAO, String tabela, int id) { classeDAO.delete(tabela, id) }
 }

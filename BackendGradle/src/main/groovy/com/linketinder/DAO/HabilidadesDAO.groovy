@@ -1,65 +1,42 @@
 package com.linketinder.DAO
 
+import com.linketinder.usuarios.User
 import groovy.sql.Sql
 import com.linketinder.usuarios.Candidato
 import com.linketinder.utils.Vaga
-
 import javax.swing.JOptionPane
 import java.sql.SQLException
 
-class HabilidadesDAO {
+class HabilidadesDAO extends ClassDAO{
 
-    static def url = 'jdbc:postgresql://localhost:5432/Linketinder'
-    static def user = 'jgmarquesm'
-    static def password = 'postgres'
-    static def driver = 'org.postgresql.Driver'
-
-    private static Sql conectar() { Sql sql = Sql.newInstance url, user, password, driver }
-    private static void desconectar(connection) { connection.close() }
-
-    static void create(String competencia, int choice, def T){
-        switch (choice){
-            case 1 -> {
-                try {
-                    createHabilidadeCandidato(competencia, (T as Candidato))
-                } catch (ClassCastException e){
-                    e.cause
-                    e.printStackTrace()
-                }
-            }
-            case 2 -> {
-                try {
-                    createHabilidadeVaga(competencia, (T as Vaga))
-                } catch (ClassCastException e){
-                    e.cause
-                    e.printStackTrace()
-                }
-            }
+    static void create(String competencia, def T){
+        if (T instanceof Candidato){
+            createHabilidadeCandidato(competencia, T)
+        } else if (T instanceof Vaga) {
+            createHabilidadeVaga(competencia, T)
+        } else {
+            throw new Exception("Opção não disponível. Revise a implementação! Método HabilidadeDAO.create(String competencia, def T). " +
+                    "<T extends ${Candidato.class} & ${Vaga.class}> e você tentou implementar para ${T}")
         }
     }
 
-    static void createHabilidadeCandidato(String habilidade, Candidato c) {
+    private static void createHabilidadeCandidato(String habilidade, Candidato c) {
         try {
             Sql create = conectar()
-            String cpf = c.getCpf()
-            create.query("SELECT c.id FROM candidatos AS c WHERE c.cpf = ${cpf}") {
+            create.query("SELECT c.id FROM candidatos AS c WHERE c.cpf = ${c.getCpf()}") {
                 while (it.next()) {
-                    int id_candidato = it.getInt('id')
                     ArrayList<String> lista_habilidades = new ArrayList<>()
-                    create.query("SELECT h.habilidade FROM habilidades AS h, habilidadescandidato as hc, candidatos as c WHERE h.id = hc.id_habilidade AND hc.id_candidato = $id_candidato") {
-                        while (it.next()) {
-                            lista_habilidades.add(it.getString("habilidade"))
-                        }
+                    create.query("SELECT h.habilidade FROM habilidades AS h, habilidadescandidato as hc, candidatos as c WHERE h.id = hc.id_habilidade AND hc.id_candidato = ${it.getInt('id')}") {
+                        while (it.next()) { lista_habilidades.add(it.getString("habilidade"))}
                     }
                     if (habilidade in lista_habilidades) {
-                        String msg = JOptionPane.showMessageDialog(null, "Habilidade já cadastrada.")
+                        JOptionPane.showMessageDialog(null, "Habilidade já cadastrada.")
                         break
                     } else {
                         create.executeInsert("INSERT INTO habilidades (habilidade) VALUES ($habilidade)")
                         create.query("SELECT h.id FROM habilidades AS h WHERE h.habilidade = $habilidade") {
                             while (it.next()) {
-                                int id_habilidade = it.getInt('id')
-                                create.executeInsert("INSERT INTO habilidadescandidato (id_habilidade, id_candidato) VALUES ($id_habilidade, $id_candidato)")
+                                create.executeInsert("INSERT INTO habilidadescandidato (id_habilidade, id_candidato) VALUES (${it.getInt('id')}, ${it.getInt('id')})")
                                 break
                             }
                         }
@@ -69,13 +46,12 @@ class HabilidadesDAO {
             }
             desconectar(create)
         } catch(SQLException e) {
-            e.cause
             e.printStackTrace()
             throw e
         }
     }
 
-   static void createHabilidadeVaga(String habilidade, Vaga v) {
+   private static void createHabilidadeVaga(String habilidade, Vaga v) {
        try {
            Sql create = conectar()
            String nome = v.getNome()
@@ -90,7 +66,7 @@ class HabilidadesDAO {
                        }
                    }
                    if (habilidade in lista_habilidades) {
-                       String msg = JOptionPane.showMessageDialog(null, "Habilidade já cadastrada.")
+                       JOptionPane.showMessageDialog(null, "Habilidade já cadastrada.")
                        break
                    } else {
                        create.executeInsert("INSERT INTO habilidades (habilidade) VALUES ($habilidade)")
@@ -107,11 +83,10 @@ class HabilidadesDAO {
            }
            desconectar(create)
        } catch(SQLException e) {
-           e.cause
            e.printStackTrace()
            throw e
        }
-    }
+   }
 
     static void habilidadesCandidato(int id) {
         try {
@@ -124,7 +99,6 @@ class HabilidadesDAO {
             }
             desconectar(readSkills)
         } catch(SQLException e) {
-            e.cause
             e.printStackTrace()
             throw e
         }

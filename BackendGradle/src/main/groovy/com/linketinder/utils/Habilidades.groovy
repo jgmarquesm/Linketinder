@@ -6,7 +6,7 @@ import javax.swing.JOptionPane
 
 class Habilidades {
 
-    static void cadastrar(HabilidadesDAO habilidadesDAO, int choice, def T){
+    static void cadastrar(def T){
 
         String sair = JOptionPane.showInputDialog("""Digite:
 \'Nova\' para cadastrar uma competencia.
@@ -15,11 +15,9 @@ class Habilidades {
         while(!sair.equalsIgnoreCase("fim")) {
             String competencia = JOptionPane.showInputDialog("Competência:\n \'Fim\' para finalizar o cadastro.")
             if (!competencia.equalsIgnoreCase("fim")) {
-                new HabilidadesDAO().create(competencia, choice, T)
+                HabilidadesDAO.create(competencia, T)
             }
             sair = competencia
         }
-
-        String msg = JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso.")
     }
 }

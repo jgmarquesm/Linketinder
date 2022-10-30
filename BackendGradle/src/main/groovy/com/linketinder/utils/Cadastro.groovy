@@ -9,22 +9,22 @@ import javax.swing.JOptionPane
 class Cadastro {
 
     static void novoCandidato(Candidato candidato) {
-        candidato.criar(new CandidatoDAO())
-        Habilidades.cadastrar(new HabilidadesDAO(), 1, candidato)
-        String msg = JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso.")
+        candidato.criar()
+        Habilidades.cadastrar(candidato)
+        JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso.")
         App.rodando()
     }
 
     static void novaEmpresa(Empresa empresa) {
-        empresa.criar(new EmpresaDAO())
-        String msg = JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso.")
+        empresa.criar()
+        JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso.")
         App.rodando()
     }
 
     static void novaVaga(Vaga vaga){
-        vaga.criar(new VagaDAO())
-        Habilidades.cadastrar(new HabilidadesDAO(), 2, vaga)
-        String msg = JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso.")
+        vaga.criar()
+        Habilidades.cadastrar(vaga)
+        JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso.")
         App.rodando()
     }
 }

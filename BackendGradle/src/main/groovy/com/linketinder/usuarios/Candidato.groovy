@@ -3,15 +3,15 @@ package com.linketinder.usuarios
 import com.linketinder.DAO.CandidatoDAO
 import com.linketinder.DAO.HabilidadesDAO
 
-class Candidato {
-    String nome
-    String sobrenome
-    String cpf
-    String telefone
-    String resumo
-    String linkedin
-    String portifolio
-    String formacao
+class Candidato implements User{
+    static String nome
+    static String sobrenome
+    static String cpf
+    static String telefone
+    static String resumo
+    static String linkedin
+    static String portifolio
+    static String formacao
 
     @Override
     String toString() {
@@ -27,9 +27,20 @@ Formação: $formacao
            """
     }
 
-    void criar(CandidatoDAO candidatoDAO) {candidatoDAO.create(this)}
+    @Override
+    void criar() { CandidatoDAO.create(getColunas(), getSqlCreateStatement())}
 
-    static void listar(CandidatoDAO candidatoDAO) {candidatoDAO.read(1)}
+    static void listar() {CandidatoDAO.read("candidato")}
 
-    static void listarHabilidades(HabilidadesDAO habilidadesDAO, int id) {habilidadesDAO.habilidadesCandidato(id)}
+    static void listarHabilidades(int id) {HabilidadesDAO.habilidadesCandidato(id)}
+
+    @Override
+    List<String> getColunas() {
+        [nome, sobrenome, cpf, telefone, resumo, linkedin, portifolio, formacao]
+    }
+
+    @Override
+    String getSqlCreateStatement() {
+        'INSERT INTO candidatos (nome, sobrenome,  cpf, telefone, resumo, linkedin, portifolio, nivel_formacao) VALUES (?, ?, ?, ?, ?, ?, ?, ?)'
+    }
 }

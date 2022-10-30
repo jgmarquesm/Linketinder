@@ -3,7 +3,7 @@ package com.linketinder.usuarios
 import com.linketinder.DAO.EmpresaDAO
 import com.linketinder.DAO.VagaDAO
 
-class Empresa {
+class Empresa implements User{
     String nome
     String cnpj
     String telefone
@@ -25,9 +25,20 @@ Quantidade de funcionário: $qtdFunc
                """
     }
 
-    void criar(EmpresaDAO empresaDAO) {empresaDAO.create(this)}
+    @Override
+    void criar() { EmpresaDAO.create(getColunas(), getSqlCreateStatement())}
 
-    static void listarMinhasVagas(VagaDAO vagaDAO, int id) {
-        vagaDAO.read(2, id)
+    static void listarMinhasVagas(int id) {
+        VagaDAO.read(id)
+    }
+
+    @Override
+    List<?> getColunas() {
+        [nome, cnpj, telefone, cep, resumo, ramo, (qtdFunc as Integer)]
+    }
+
+    @Override
+    String getSqlCreateStatement() {
+        'INSERT INTO empresas (nome, cnpj, telefone, cep, resumo, ramo, quantidade_funcionario) VALUES (?, ?, ?, ?, ?, ?, ?)'
     }
 }
