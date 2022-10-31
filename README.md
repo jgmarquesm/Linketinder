@@ -47,3 +47,4 @@ candidato curtiu uma vaga daquela mesma empresa.</li>
 </p>
 
 <p>Tentei aplicar os princípios SOLID e o Clean Code, principalmente no que diz respeito ao DRY, SRP, LSP, ISP e DIP.</p>
+<p>Abstrai a parte de conexão e uso do DB, adicionei mais 2 testes unitários nas classes que implementam User. Criei algumas interfaces para abstrair aplicações, como ClassDAO, User e UserDAO. Injetei dependências atraves do construtor e parametros na chamada de métodos.</p>
