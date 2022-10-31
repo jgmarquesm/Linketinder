@@ -45,3 +45,5 @@ um candidato, o id dela e do candidatos também são salvos em uma entidade do D
 feita uma consulta ao DB (nas entidades: candidatosCurtidos, vagasCurtidas e vagas) que retornará os casos em que a empresa curtiu um candidato e o mesmo
 candidato curtiu uma vaga daquela mesma empresa.</li>
 </p>
+
+<p>Tentei aplicar os princípios SOLID e o Clean Code, principalmente no que diz respeito ao DRY, SRP, LSP, ISP e DIP.</p>
