@@ -1,7 +1,7 @@
-package com.linketinder.usuarios
+package com.linketinder.AlgumaCoisa
 
-import com.linketinder.DAO.EmpresaDAO
-import com.linketinder.DAO.VagaDAO
+import com.linketinder.Model.DAO.EmpresaDAO
+import com.linketinder.Model.DAO.VagaDAO
 
 class Empresa implements User{
     String nome

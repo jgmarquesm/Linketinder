@@ -1,20 +1,29 @@
-package com.linketinder.utils
+package com.linketinder.Controller
 
-import com.linketinder.DAO.*
-import com.linketinder.usuarios.*
-
+import com.linketinder.AlgumaCoisa.Candidato
+import com.linketinder.AlgumaCoisa.Empresa
+import com.linketinder.AlgumaCoisa.Vaga
+import com.linketinder.Model.DAO.CandidatoDAO
+import com.linketinder.Model.DAO.ClassDAO
+import com.linketinder.Model.DAO.EmpresaDAO
+import com.linketinder.Model.DAO.VagaDAO
+import com.linketinder.View.App
 import javax.swing.JOptionPane
 
 class Opcoes {
 
+    static CandidatoDAO candidatoDAO = new CandidatoDAO()
+    static EmpresaDAO empresaDAO = new EmpresaDAO()
+    static VagaDAO vagaDAO = new VagaDAO()
+
     static void authCandidato(){
         String cpf = JOptionPane.showInputDialog("Digite seu CPF: (apenas números)")
-        opcoesCandidato(CandidatoDAO.read("candidatos", "cpf", cpf))
+        opcoesCandidato(candidatoDAO.read("candidatos", "cpf", cpf))
     }
 
     static void authEmpresa(){
         String cnpj = JOptionPane.showInputDialog("Digite seu CNPJ: (apenas números)")
-        opcoesEmpresa(EmpresaDAO.read("empresas", "cnpj", cnpj))
+        opcoesEmpresa(empresaDAO.read("empresas", "cnpj", cnpj))
     }
 
     static void opcoesCandidato(int ID){
@@ -29,7 +38,7 @@ class Opcoes {
             case "1" -> Vaga.listar()
             case "2" -> Candidato.listarHabilidades(ID)
             case "3" -> atualizarCadastroCandidato(ID)
-            case "4" -> apagar(new CandidatoDAO(), "candidatos", ID)
+            case "4" -> apagar(candidatoDAO, "candidatos", ID)
             case "5" -> App.rodando()
             case "6" -> System.exit(0)
         }
@@ -51,14 +60,14 @@ class Opcoes {
 ''')
         String valor = JOptionPane.showInputDialog("Novo valor: ")
         switch (campo.toLowerCase(Locale.ROOT)) {
-            case "1" -> atualizar(new CandidatoDAO(),"candidatos","nome", valor, ID)
-            case "2" -> atualizar(new CandidatoDAO(),"candidatos","sobrenome", valor, ID)
-            case "3" -> atualizar(new CandidatoDAO(),"candidatos","cpf", valor, ID)
-            case "4" -> atualizar(new CandidatoDAO(),"candidatos","telefone", valor, ID)
-            case "5" -> atualizar(new CandidatoDAO(),"candidatos","resumo", valor, ID)
-            case "6" -> atualizar(new CandidatoDAO(),"candidatos","linkedin", valor, ID)
-            case "7" -> atualizar(new CandidatoDAO(),"candidatos","portifolio", valor, ID)
-            case "8" -> atualizar(new CandidatoDAO(),"candidatos","formacao", valor, ID)
+            case "1" -> atualizar(candidatoDAO,"candidatos","nome", valor, ID)
+            case "2" -> atualizar(candidatoDAO,"candidatos","sobrenome", valor, ID)
+            case "3" -> atualizar(candidatoDAO,"candidatos","cpf", valor, ID)
+            case "4" -> atualizar(candidatoDAO,"candidatos","telefone", valor, ID)
+            case "5" -> atualizar(candidatoDAO,"candidatos","resumo", valor, ID)
+            case "6" -> atualizar(candidatoDAO,"candidatos","linkedin", valor, ID)
+            case "7" -> atualizar(candidatoDAO,"candidatos","portifolio", valor, ID)
+            case "8" -> atualizar(candidatoDAO,"candidatos","formacao", valor, ID)
             case "9" -> opcoesCandidato(ID)
             case "10" -> {System.exit(0)}
         }
@@ -77,7 +86,7 @@ class Opcoes {
             case "1" -> Candidato.listar()
             case "2" -> atualizarCadastroEmpresa(ID)
             case "3" -> gerenciarVagas(ID)
-            case "4" -> apagar(new EmpresaDAO(), "empresas", ID)
+            case "4" -> apagar(empresaDAO, "empresas", ID)
             case "5" -> App.rodando()
             case "6" -> {System.exit(0)}
         }
@@ -98,13 +107,13 @@ class Opcoes {
 ''')
         String valor = JOptionPane.showInputDialog("Novo valor: ")
         switch (campo.toLowerCase(Locale.ROOT)) {
-            case "1" -> atualizar(new EmpresaDAO(),"empresas", "nome", valor, ID)
-            case "2" -> atualizar(new EmpresaDAO(),"empresas","cnpj", valor, ID)
-            case "3" -> atualizar(new EmpresaDAO(),"empresas","telefone", valor, ID)
-            case "4" -> atualizar(new EmpresaDAO(),"empresas","cep", valor, ID)
-            case "5" -> atualizar(new EmpresaDAO(),"empresas","resumo", valor, ID)
-            case "6" -> atualizar(new EmpresaDAO(),"empresas","ramo", valor, ID)
-            case "7" -> atualizar(new EmpresaDAO(),"empresas","quantidade_funcionario", valor, ID)
+            case "1" -> atualizar(empresaDAO,"empresas", "nome", valor, ID)
+            case "2" -> atualizar(empresaDAO,"empresas","cnpj", valor, ID)
+            case "3" -> atualizar(empresaDAO,"empresas","telefone", valor, ID)
+            case "4" -> atualizar(empresaDAO,"empresas","cep", valor, ID)
+            case "5" -> atualizar(empresaDAO,"empresas","resumo", valor, ID)
+            case "6" -> atualizar(empresaDAO,"empresas","ramo", valor, ID)
+            case "7" -> atualizar(empresaDAO,"empresas","quantidade_funcionario", valor, ID)
             case "8" -> opcoesEmpresa(ID)
             case "9" -> {System.exit(0)}
         }
@@ -140,7 +149,7 @@ class Opcoes {
             case "4" -> {
                 String id_vaga = JOptionPane.showInputDialog("ID da vaga:")
                 int idVaga = id_vaga.toInteger()
-                apagar(new VagaDAO(), "vagas", idVaga)
+                apagar(vagaDAO, "vagas", idVaga)
             }
             case "5" -> opcoesEmpresa(ID)
             case "6" -> {System.exit(0)}
@@ -158,10 +167,10 @@ class Opcoes {
 ''')
         String valor = JOptionPane.showInputDialog("Novo valor: ")
         switch (campo.toLowerCase(Locale.ROOT)) {
-            case "1" -> atualizar(new VagaDAO(), "vagas", "nome", valor, ID)
-            case "2" -> atualizar(new VagaDAO(), "vagas","descricao", valor, ID)
-            case "3" -> atualizar(new VagaDAO(), "vagas","senioridade", valor, ID)
-            case "4" -> atualizar(new VagaDAO(), "vagas","cidade", valor, ID)
+            case "1" -> atualizar(vagaDAO, "vagas", "nome", valor, ID)
+            case "2" -> atualizar(vagaDAO, "vagas","descricao", valor, ID)
+            case "3" -> atualizar(vagaDAO, "vagas","senioridade", valor, ID)
+            case "4" -> atualizar(vagaDAO, "vagas","cidade", valor, ID)
             case "5" -> gerenciarVagas(ID)
             case "6" -> {System.exit(0)}
         }

@@ -1,8 +1,9 @@
-package com.linketinder.utils
+package com.linketinder.Controller
 
-import com.linketinder.DAO.*
-import com.linketinder.usuarios.Candidato
-import com.linketinder.usuarios.Empresa
+import com.linketinder.AlgumaCoisa.Candidato
+import com.linketinder.AlgumaCoisa.Empresa
+import com.linketinder.AlgumaCoisa.Vaga
+import com.linketinder.View.App
 
 import javax.swing.JOptionPane
 

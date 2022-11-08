@@ -1,6 +1,6 @@
 package com.linketinder
 
-import com.linketinder.utils.App
+import com.linketinder.View.App
 /**
  * @param args
  * @author João Gabriel M. Mendes

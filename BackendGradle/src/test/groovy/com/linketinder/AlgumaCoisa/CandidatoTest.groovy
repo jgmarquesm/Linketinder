@@ -1,4 +1,4 @@
-package com.linketinder.usuarios
+package com.linketinder.AlgumaCoisa
 
 import spock.lang.Specification
 
@@ -10,7 +10,7 @@ class CandidatoTest extends Specification {
                     formacao: "Formação Teste")
         when:
             String candidatoToString = candidato.toString()
-        String resultadoEsperado = """
+            String resultadoEsperado = """
 Nome: Candidato
 Sobrenome: Teste
 CPF: 00000000000

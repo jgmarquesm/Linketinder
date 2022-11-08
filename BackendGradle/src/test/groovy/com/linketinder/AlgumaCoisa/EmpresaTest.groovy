@@ -1,12 +1,11 @@
-package com.linketinder.usuarios
+package com.linketinder.AlgumaCoisa
 
 import spock.lang.Specification
 
 class EmpresaTest extends Specification {
-
     def "test toString"() {
         given:
-        Empresa empresa = new Empresa(nome: "Empresa Teste", cnpj: "00000000000000", telefone: "0000000000",
+            Empresa empresa = new Empresa(nome: "Empresa Teste", cnpj: "00000000000000", telefone: "0000000000",
                 cep: "00000000", resumo: "blablabla", ramo: "Teste", qtdFunc: "00")
         when:
             String empresaToString = empresa.toString()

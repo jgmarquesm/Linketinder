@@ -1,6 +1,6 @@
-package com.linketinder.utils
+package com.linketinder.AlgumaCoisa
 
-import com.linketinder.DAO.VagaDAO
+import com.linketinder.Model.DAO.VagaDAO
 
 class Vaga {
 

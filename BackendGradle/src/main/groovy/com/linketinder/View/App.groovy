@@ -1,7 +1,11 @@
-package com.linketinder.utils
+package com.linketinder.View
 
-import com.linketinder.usuarios.Candidato
-import com.linketinder.usuarios.Empresa
+
+import com.linketinder.AlgumaCoisa.Candidato
+import com.linketinder.AlgumaCoisa.Empresa
+import com.linketinder.Controller.Cadastro
+import com.linketinder.Controller.Opcoes
+
 import javax.swing.JOptionPane
 
 class App {

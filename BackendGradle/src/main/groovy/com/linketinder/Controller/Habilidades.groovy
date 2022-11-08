@@ -1,6 +1,6 @@
-package com.linketinder.utils
+package com.linketinder.Controller
 
-import com.linketinder.DAO.HabilidadesDAO
+import com.linketinder.Model.DAO.HabilidadesDAO
 
 import javax.swing.JOptionPane
 

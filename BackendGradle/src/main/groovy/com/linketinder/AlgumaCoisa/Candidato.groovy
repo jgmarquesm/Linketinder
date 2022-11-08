@@ -1,7 +1,7 @@
-package com.linketinder.usuarios
+package com.linketinder.AlgumaCoisa
 
-import com.linketinder.DAO.CandidatoDAO
-import com.linketinder.DAO.HabilidadesDAO
+import com.linketinder.Model.DAO.CandidatoDAO
+import com.linketinder.Model.DAO.HabilidadesDAO
 
 class Candidato implements User{
     static String nome
@@ -28,7 +28,7 @@ Formação: $formacao
     }
 
     @Override
-    void criar() { CandidatoDAO.create(getColunas(), getSqlCreateStatement())}
+    void criar() {CandidatoDAO.create(getColunas(), getSqlCreateStatement())}
 
     static void listar() {CandidatoDAO.read("candidato")}
 
