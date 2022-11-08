@@ -1,6 +1,6 @@
 package com.linketinder.Model.DAO
 
-import static com.linketinder.Model.utils.utilsVaga.listarMinhasVagas
+import static com.linketinder.Model.DAO.utils.utilsVaga.listarMinhasVagas
 
 class VagaDAO extends ClassDAO{
 

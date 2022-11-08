@@ -1,8 +1,8 @@
 package com.linketinder.Model.DAO
 
 import groovy.sql.Sql
-import com.linketinder.AlgumaCoisa.Candidato
-import com.linketinder.AlgumaCoisa.Vaga
+import com.linketinder.Domain.Candidato
+import com.linketinder.Domain.Vaga
 import javax.swing.JOptionPane
 import java.sql.SQLException
 

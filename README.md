@@ -51,3 +51,5 @@ candidato curtiu uma vaga daquela mesma empresa.</li>
 <p>Abstrai a parte de conexão e uso do DB, adicionei mais 2 testes unitários nas classes que implementam User. Criei algumas interfaces para abstrair aplicações, como ClassDAO, User. Injetei dependências atraves do construtor e parametros na chamada de métodos.</p>
 <strong>Design Patterns</strong>
 <p>Usei o Padrão Factory para abstrair o banco de dados, baixando o acoplamento em relação do SGBD. Tentei aplicar o padrão Singleton nos objetos do tipo User e ClassDAO.</p>
+<strong>MVC</strong>
+<p>Fiz a separação das camadas Model, "View" (apenas enquanto não é feita a integração entre Back e Front) e Controller no Backend adicinando a "camada" de Domain que contem as Classes principais do produto (Candidatos, Empresas, Vagas, User e Habilidades). Já na camanda View está apenas a Classe App; Na Camada Controller estão as Classes: Cadastro e Opções; E por fim, na Camada Model estão as Classes, Interfaces e Enuns responsáveis pelo acesso ao DB.</p>

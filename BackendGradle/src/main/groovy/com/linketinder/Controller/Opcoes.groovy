@@ -1,8 +1,8 @@
 package com.linketinder.Controller
 
-import com.linketinder.AlgumaCoisa.Candidato
-import com.linketinder.AlgumaCoisa.Empresa
-import com.linketinder.AlgumaCoisa.Vaga
+import com.linketinder.Domain.Candidato
+import com.linketinder.Domain.Empresa
+import com.linketinder.Domain.Vaga
 import com.linketinder.Model.DAO.CandidatoDAO
 import com.linketinder.Model.DAO.ClassDAO
 import com.linketinder.Model.DAO.EmpresaDAO

@@ -1,9 +1,5 @@
 package com.linketinder.Model.Conexoes
 
-import com.linketinder.Model.Conexoes.ConexaoDB
-import com.linketinder.Model.Conexoes.ConexaoPostgreSQL
-import com.linketinder.Model.utils.BDSuportados
-
 abstract class ConexaoDBFactory {
     private ConexaoDBFactory() {}
 

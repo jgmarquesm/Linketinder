@@ -1,8 +1,8 @@
 package com.linketinder.View
 
 
-import com.linketinder.AlgumaCoisa.Candidato
-import com.linketinder.AlgumaCoisa.Empresa
+import com.linketinder.Domain.Candidato
+import com.linketinder.Domain.Empresa
 import com.linketinder.Controller.Cadastro
 import com.linketinder.Controller.Opcoes
 

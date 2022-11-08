@@ -1,13 +1,13 @@
 package com.linketinder.Model.DAO
 
-import com.linketinder.Model.utils.BDSuportados
+import com.linketinder.Model.Conexoes.BDSuportados
 import com.linketinder.Model.Conexoes.ConexaoDB
 import com.linketinder.Model.Conexoes.ConexaoDBFactory
 import groovy.sql.Sql
 import javax.swing.JOptionPane
 import java.sql.SQLException
-import static com.linketinder.Model.utils.utilsCandidato.listarCandidatos
-import static com.linketinder.Model.utils.utilsVaga.listarVagas
+import static com.linketinder.Model.DAO.utils.utilsCandidato.listarCandidatos
+import static com.linketinder.Model.DAO.utils.utilsVaga.listarVagas
 
 abstract class ClassDAO {
 
