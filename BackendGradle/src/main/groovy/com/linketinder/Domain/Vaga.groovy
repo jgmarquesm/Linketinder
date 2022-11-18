@@ -12,7 +12,7 @@ class Vaga {
 
     static void criar(){VagaDAO.create(getParametros(), getSqlCreateStatement())}
 
-    static void listar(){VagaDAO.read("vaga")}
+    static ArrayList listar(){VagaDAO.read("vaga")}
 
     static List<Object> getParametros() {
         [nome, descricao, senioridade, cidade, id_empresa]

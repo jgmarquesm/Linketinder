@@ -4,13 +4,13 @@ import com.linketinder.Model.DAO.EmpresaDAO
 import com.linketinder.Model.DAO.VagaDAO
 
 class Empresa implements User{
-    String nome
-    String cnpj
-    String telefone
-    String cep
-    String resumo
-    String ramo
-    String qtdFunc
+    static String nome
+    static String cnpj
+    static String telefone
+    static String cep
+    static String resumo
+    static String ramo
+    static String qtdFunc
 
     @Override
     String toString() {

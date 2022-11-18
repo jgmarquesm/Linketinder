@@ -1,4 +1,4 @@
-package com.linketinder.Controller
+package com.linketinder.Services
 
 import com.linketinder.Domain.Candidato
 import com.linketinder.Domain.Empresa
@@ -123,36 +123,25 @@ class Opcoes {
     static void gerenciarVagas(int ID) {
         String vag = JOptionPane.showInputDialog('''Gerenciar Vagas:
 1 - Listar Vagas Cadastradas
-2 - Cadastrar Vaga
-3 - Atualizar Vaga
-4 - Apagar Vaga
-5 - Voltar
-6 - Sair
+2 - Atualizar Vaga
+3 - Apagar Vaga
+4 - Voltar
+5 - Sair
 ''')
         switch (vag.toLowerCase(Locale.ROOT)) {
             case "1" -> Empresa.listarMinhasVagas(ID)
             case "2" -> {
-                String nome = JOptionPane.showInputDialog("Nome:")
-                String descricao = JOptionPane.showInputDialog("Descrição:")
-                String senioridade = JOptionPane.showInputDialog("Senioridade:")
-                String cidade = JOptionPane.showInputDialog("Cidade:")
-                int ID_EMPRESA = ID
-
-                Vaga vaga = new Vaga(nome: nome, descricao: descricao, senioridade: senioridade, cidade: cidade, id_empresa: ID_EMPRESA)
-                Cadastro.novaVaga(vaga)
-            }
-            case "3" -> {
                 String id_vaga = JOptionPane.showInputDialog("ID da vaga:")
                 int idVaga = id_vaga.toInteger()
                 atualizarCadastroVagas(idVaga)
             }
-            case "4" -> {
+            case "3" -> {
                 String id_vaga = JOptionPane.showInputDialog("ID da vaga:")
                 int idVaga = id_vaga.toInteger()
                 apagar(vagaDAO, "vagas", idVaga)
             }
-            case "5" -> opcoesEmpresa(ID)
-            case "6" -> {System.exit(0)}
+            case "4" -> opcoesEmpresa(ID)
+            case "5" -> {System.exit(0)}
         }
     }
 

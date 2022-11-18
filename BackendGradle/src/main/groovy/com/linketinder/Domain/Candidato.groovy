@@ -14,23 +14,9 @@ class Candidato implements User{
     static String formacao
 
     @Override
-    String toString() {
-        return """
-Nome: $nome
-Sobrenome: $sobrenome
-CPF: $cpf
-Telefone: $telefone
-Resumo: $resumo
-Linkedin: $linkedin
-Portifólio: $portifolio
-Formação: $formacao
-           """
-    }
-
-    @Override
     void criar() {CandidatoDAO.create(getColunas(), getSqlCreateStatement())}
 
-    static void listar() {CandidatoDAO.read("candidato")}
+    static ArrayList listar() {CandidatoDAO.read("candidato")}
 
     static void listarHabilidades(int id) {HabilidadesDAO.habilidadesCandidato(id)}
 
@@ -41,6 +27,6 @@ Formação: $formacao
 
     @Override
     String getSqlCreateStatement() {
-        'INSERT INTO candidatos (nome, sobrenome,  cpf, telefone, resumo, linkedin, portifolio, nivel_formacao) VALUES (?, ?, ?, ?, ?, ?, ?, ?)'
+        "INSERT INTO candidatos (nome, sobrenome,  cpf, telefone, resumo, linkedin, portifolio, nivel_formacao) VALUES (?, ?, ?, ?, ?, ?, ?, ?)"
     }
 }
